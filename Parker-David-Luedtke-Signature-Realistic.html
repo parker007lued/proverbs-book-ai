@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parker David Luedtke - Realistic Signature</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .signature-container {
+            background: white;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .signature-wrapper {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 60px 40px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+            position: relative;
+        }
+
+        .signature-svg {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+        }
+
+        .signature-path {
+            fill: none;
+            stroke: #1a1a1a;
+            stroke-width: 2.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #333;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .buttons {
+                display: none;
+            }
+            .info {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signature-container">
+        <h1>Parker David Luedtke</h1>
+        
+        <div class="signature-wrapper">
+            <svg class="signature-svg" viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg">
+                <!-- Realistic handwritten signature path -->
+                <!-- Parker -->
+                <path class="signature-path" d="M 30 90 
+                    Q 35 70, 45 80 T 70 85 
+                    Q 85 85, 95 80 Q 105 75, 115 80 T 135 85 
+                    Q 150 85, 160 80 Q 170 75, 180 80 T 200 85 
+                    Q 210 85, 220 80 Q 230 75, 240 80 T 260 85" />
+                
+                <path class="signature-path" d="M 260 85 
+                    Q 270 80, 280 85 T 300 90 
+                    Q 310 95, 320 90 Q 330 85, 340 90 T 360 95" />
+                
+                <!-- David -->
+                <path class="signature-path" d="M 380 90 
+                    Q 390 75, 400 85 T 420 90 
+                    Q 430 85, 440 90 T 460 95 
+                    Q 470 90, 480 95 T 500 100" />
+                
+                <path class="signature-path" d="M 500 100 
+                    Q 510 95, 520 100 T 540 105 
+                    Q 550 100, 560 105" />
+                
+                <!-- Luedtke -->
+                <path class="signature-path" d="M 30 140 
+                    Q 40 130, 50 135 T 70 140 
+                    Q 80 135, 90 140 T 110 145 
+                    Q 120 140, 130 145 T 150 150" />
+                
+                <path class="signature-path" d="M 150 150 
+                    Q 160 145, 170 150 T 190 155 
+                    Q 200 150, 210 155 T 230 160 
+                    Q 240 155, 250 160 T 270 165" />
+                
+                <path class="signature-path" d="M 270 165 
+                    Q 280 160, 290 165 T 310 170 
+                    Q 320 165, 330 170 T 350 175" />
+                
+                <path class="signature-path" d="M 350 175 
+                    Q 360 170, 370 175 T 390 180 
+                    Q 400 175, 410 180 T 430 185" />
+                
+                <!-- Additional flourishes for realism -->
+                <path class="signature-path" d="M 430 185 
+                    Q 440 180, 450 185" 
+                    stroke-width="2" opacity="0.7" />
+            </svg>
+        </div>
+
+        <div class="buttons">
+            <button class="btn btn-primary" onclick="copySignature()">Copy Signature</button>
+            <button class="btn btn-secondary" onclick="downloadSignature()">Download PNG</button>
+            <button class="btn btn-secondary" onclick="downloadSVG()">Download SVG</button>
+            <button class="btn btn-secondary" onclick="printSignature()">Print</button>
+        </div>
+
+        <div class="info">
+            <strong>Digital Signature</strong><br>
+            This is a digital representation of the signature "Parker David Luedtke". 
+            You can copy it to your clipboard, download it as an image (PNG or SVG), or print it for use in documents.
+            The signature is designed to look handwritten and professional.
+        </div>
+    </div>
+
+    <script>
+        function copySignature() {
+            const svg = document.querySelector('.signature-svg');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            canvas.width = 1400;
+            canvas.height = 360;
+            
+            img.onload = function() {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                canvas.toBlob(function(blob) {
+                    navigator.clipboard.write([
+                        new ClipboardItem({ 'image/png': blob })
+                    ]).then(() => {
+                        alert('✓ Signature copied to clipboard!');
+                    }).catch(err => {
+                        console.error('Failed to copy:', err);
+                        // Fallback: copy SVG as text
+                        navigator.clipboard.writeText(svgData).then(() => {
+                            alert('SVG code copied to clipboard!');
+                        });
+                    });
+                });
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        }
+
+        function downloadSignature() {
+            const svg = document.querySelector('.signature-svg');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            canvas.width = 1400;
+            canvas.height = 360;
+            
+            img.onload = function() {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Parker-David-Luedtke-Signature.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        }
+
+        function downloadSVG() {
+            const svg = document.querySelector('.signature-svg');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const blob = new Blob([svgData], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Parker-David-Luedtke-Signature.svg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function printSignature() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

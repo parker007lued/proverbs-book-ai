@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proverbs Book AI - Windows Installer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .installer-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .step h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="installer-container">
+        <h1>📖 Proverbs Book AI</h1>
+        <p class="subtitle">Windows Installation Guide</p>
+
+        <div class="step">
+            <h2>Step 1: Download PowerShell Script</h2>
+            <p>Right-click the file <strong>INSTALLER-WINDOWS.ps1</strong> and select:</p>
+            <div class="code-block">Run with PowerShell</div>
+            <p>Or open PowerShell and run:</p>
+            <div class="code-block">powershell -ExecutionPolicy Bypass -File INSTALLER-WINDOWS.ps1</div>
+        </div>
+
+        <div class="step">
+            <h2>Step 2: Allow Script Execution</h2>
+            <p>If you see a security warning:</p>
+            <ol style="margin-left: 20px; color: #666;">
+                <li>Click "More info"</li>
+                <li>Click "Run anyway"</li>
+            </ol>
+            <p>Or run PowerShell as Administrator and execute:</p>
+            <div class="code-block">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</div>
+        </div>
+
+        <div class="step">
+            <h2>Step 3: Wait for Installation</h2>
+            <p>The installer will automatically:</p>
+            <ul style="margin-left: 20px; color: #666;">
+                <li>Install Chocolatey (package manager)</li>
+                <li>Install Ollama (AI engine)</li>
+                <li>Install Pandoc (book export)</li>
+                <li>Install Node.js (if needed)</li>
+                <li>Download AI model (~2GB, takes 5-10 minutes)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2>Step 4: Run the App</h2>
+            <p>After installation completes, run:</p>
+            <div class="code-block">npm start</div>
+            <p>Or double-click the app icon if available.</p>
+        </div>
+
+        <div class="warning">
+            <strong>⚠ Note:</strong> The installer requires Administrator privileges. Right-click PowerShell and select "Run as Administrator" if needed.
+        </div>
+
+        <div class="success">
+            <strong>✓ Alternative:</strong> If you prefer, you can manually install each component using the links provided in the installer script.
+        </div>
+
+        <button class="btn" onclick="window.close()">Close</button>
+    </div>
+</body>
+</html>

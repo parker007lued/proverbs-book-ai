@@ -1,0 +1,95 @@
+PROVERBS BOOK AI - INSTALLATION GUIDE
+=====================================
+
+FOR YOUR MOTHER - SIMPLE INSTRUCTIONS
+--------------------------------------
+
+WHAT YOU HAVE:
+--------------
+A ZIP file containing the Proverbs Book AI application.
+
+STEP 1: EXTRACT THE ZIP
+------------------------
+1. Double-click "Proverbs-Book-AI-Standalone.zip"
+2. Extract all files to a folder (like Desktop or Documents)
+3. Remember where you extracted it!
+
+STEP 2: INSTALL DEPENDENCIES
+----------------------------
+The app needs some software to run. Here's how to install it:
+
+Option A: Automatic Installer (Easiest)
+----------------------------------------
+1. Open Terminal (Applications → Utilities → Terminal)
+2. Navigate to the extracted folder:
+   cd ~/Desktop/Proverbs-Book-AI-Standalone
+   (or wherever you extracted it)
+3. Run the installer:
+   chmod +x scripts/download-all.sh
+   ./scripts/download-all.sh
+4. Enter your password when asked
+5. Wait for installation (5-10 minutes)
+
+Option B: Manual Installation
+------------------------------
+1. Install Homebrew (if not installed):
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+2. Install Ollama:
+   curl -fsSL https://ollama.ai/install.sh | sh
+
+3. Install Pandoc:
+   brew install pandoc
+
+4. Install Node.js:
+   brew install node
+
+5. Download AI Model:
+   ollama pull phi3:mini
+
+STEP 3: INSTALL NODE MODULES
+-----------------------------
+1. Open Terminal
+2. Navigate to the extracted folder
+3. Run: npm install
+4. Wait for installation
+
+STEP 4: RUN THE APP
+--------------------
+1. In Terminal, navigate to the extracted folder
+2. Run: npm start
+3. The app will open!
+
+FIRST TIME SETUP:
+------------------
+When you first run the app:
+1. It will check for dependencies
+2. If anything is missing, it will ask to download
+3. Click "Download & Install"
+4. Wait for everything to install
+5. App will restart automatically
+6. Ready to use!
+
+USING THE APP:
+--------------
+1. Select a chapter number (1-31)
+2. Click "Load Chapter" to see verses
+3. Choose content type (Commentary, Summary, etc.)
+4. Click "Generate Chapter"
+5. Wait 30-60 seconds
+6. Review and edit the text
+7. Click "Save Chapter"
+8. Repeat for more chapters
+9. Click "Export as PDF" or "Export as EPUB" when done!
+
+TROUBLESHOOTING:
+----------------
+- "Command not found": Make sure you're in the right folder
+- "Permission denied": Run: chmod +x scripts/download-all.sh
+- App won't start: Check Terminal for error messages
+- Dependencies fail: Try manual installation (Option B)
+
+NEED HELP?
+----------
+The app includes a README.md file with more details.
+Check the Terminal output for any error messages.

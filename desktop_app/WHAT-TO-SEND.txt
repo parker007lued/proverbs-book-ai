@@ -1,0 +1,113 @@
+═══════════════════════════════════════════════════════════════
+  WHAT TO SEND - COMPLETE GUIDE
+═══════════════════════════════════════════════════════════════
+
+📱 FOR iPAD/iPHONE (Already Done):
+═══════════════════════════════════════════════════════════════
+File: desktop_app/ipad-web/Proverbs-Book-AI.html
+Status: ✅ Already sent
+
+═══════════════════════════════════════════════════════════════
+
+💻 FOR MAC LAPTOP:
+═══════════════════════════════════════════════════════════════
+
+OPTION 1: DMG Installer (BEST - Send This!)
+────────────────────────────────────────────
+1. Build the installer:
+   - On Mac: Run BUILD-MAC-INSTALLER.sh
+   - Creates: dist/Proverbs-Book-AI-*.dmg
+
+2. Send the DMG file
+   - File: dist/Proverbs-Book-AI-*.dmg
+   - Size: ~100-200 MB
+
+3. What she does:
+   - Double-clicks DMG
+   - Drags app to Applications
+   - Opens app → Everything installs automatically!
+
+OPTION 2: Installer Script (Backup)
+───────────────────────────────────
+1. Send these files:
+   - INSTALLER-MAC.sh
+   - All app files (or ZIP them)
+
+2. What she does:
+   - Opens Terminal
+   - Runs: chmod +x INSTALLER-MAC.sh
+   - Runs: ./INSTALLER-MAC.sh
+   - Enters password
+   - Waits 5-10 minutes
+   - Runs: npm start
+
+═══════════════════════════════════════════════════════════════
+
+💻 FOR WINDOWS LAPTOP:
+═══════════════════════════════════════════════════════════════
+
+OPTION 1: EXE Installer (BEST - Send This!)
+──────────────────────────────────────────────
+1. Build the installer:
+   - On Windows: Run BUILD-WINDOWS-INSTALLER.bat
+   - Creates: dist/Proverbs-Book-AI-Setup.exe
+
+2. Send the EXE file
+   - File: dist/Proverbs-Book-AI-Setup.exe
+   - Size: ~100-200 MB
+
+3. What she does:
+   - Double-clicks EXE
+   - Follows installation wizard
+   - Opens app → Everything installs automatically!
+
+OPTION 2: Installer Script (Backup)
+───────────────────────────────────
+1. Send these files:
+   - INSTALLER-WINDOWS.ps1
+   - All app files (or ZIP them)
+
+2. What she does:
+   - Right-clicks INSTALLER-WINDOWS.ps1
+   - Selects "Run with PowerShell"
+   - Clicks "Yes" for permission
+   - Waits 5-10 minutes
+   - Runs: npm start
+
+═══════════════════════════════════════════════════════════════
+
+🎯 QUICK REFERENCE:
+═══════════════════════════════════════════════════════════════
+
+iPad:     Proverbs-Book-AI.html (already sent) ✅
+Mac:      Proverbs-Book-AI-*.dmg (build first)
+Windows:  Proverbs-Book-AI-Setup.exe (build first)
+
+═══════════════════════════════════════════════════════════════
+
+📦 WHAT GETS INSTALLED AUTOMATICALLY:
+═══════════════════════════════════════════════════════════════
+
+✓ Ollama (AI engine) - Downloads from ollama.ai
+✓ Pandoc (book export) - Downloads via Homebrew/Chocolatey
+✓ Node.js (if needed) - Downloads automatically
+✓ AI Model (phi3:mini) - Downloads via Ollama (~2GB)
+✓ All app dependencies - Installs via npm
+
+Everything happens automatically when she opens the app!
+
+═══════════════════════════════════════════════════════════════
+
+✅ FIRST RUN EXPERIENCE:
+═══════════════════════════════════════════════════════════════
+
+1. App opens
+2. Checks for dependencies
+3. Shows "Install Dependencies" button if needed
+4. She clicks button
+5. Everything downloads automatically
+6. Progress bars show download status
+7. App restarts when done
+8. Ready to use!
+
+═══════════════════════════════════════════════════════════════

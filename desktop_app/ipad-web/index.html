@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Proverbs Book AI">
+    <title>Proverbs Book AI</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/cross-icon-192.png">
+    <link rel="icon" href="icons/cross-icon-192.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            max-width: 100%;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .app-header {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .app-header h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #28a745;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .panel h2 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .input, .select, .textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .input:focus, .select:focus, .textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .textarea {
+            min-height: 200px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+            font-family: inherit;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:active {
+            background: #5568d3;
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:active {
+            background: #5a6268;
+            transform: scale(0.98);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:active {
+            background: #218838;
+            transform: scale(0.98);
+        }
+
+        .status-message {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .chapters-list {
+            margin-bottom: 20px;
+        }
+
+        .chapter-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .chapter-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .chapter-meta {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 40px 20px;
+            font-style: italic;
+        }
+
+        .install-instructions {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .install-instructions h3 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .install-instructions ol {
+            margin-left: 20px;
+            color: #856404;
+        }
+
+        .install-instructions li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 768px) {
+            .app-container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <h1>✝ Proverbs Book AI</h1>
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span id="statusText">Ready</span>
+            </div>
+        </div>
+
+        <!-- Install Instructions -->
+        <div class="install-instructions" id="installInstructions" style="display: none;">
+            <h3>📱 Install This App on Your iPad</h3>
+            <ol>
+                <li>Tap the <strong>Share</strong> button (square with arrow) at the bottom</li>
+                <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
+                <li>Tap <strong>"Add"</strong> in the top right</li>
+                <li>The app will appear on your home screen with a cross icon ✝</li>
+            </ol>
+        </div>
+
+        <!-- Chapter Generator -->
+        <div class="panel">
+            <h2>Generate Chapter Content</h2>
+            
+            <div class="form-group">
+                <label>Chapter Number (1-31):</label>
+                <input type="number" id="chapterInput" min="1" max="31" value="1" class="input">
+            </div>
+
+            <div class="form-group">
+                <label>Content Type:</label>
+                <select id="contentTypeSelect" class="select">
+                    <option value="commentary">Commentary</option>
+                    <option value="summary">Summary</option>
+                    <option value="devotional">Devotional</option>
+                    <option value="reflection">Personal Reflection</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" id="generateBtn">Generate Chapter</button>
+
+            <div class="status-message" id="generateStatus" style="display: none;"></div>
+
+            <div class="form-group">
+                <label>Generated Content:</label>
+                <textarea id="contentTextarea" class="textarea" placeholder="Generated content will appear here..."></textarea>
+            </div>
+
+            <button class="btn btn-secondary" id="copyTextBtn">Copy Text</button>
+            <button class="btn btn-secondary" id="saveChapterBtn">Save Chapter</button>
+        </div>
+
+        <!-- Your Book -->
+        <div class="panel">
+            <h2>Your Book</h2>
+            <div id="chaptersList" class="chapters-list">
+                <p class="empty-state">No chapters saved yet. Generate your first chapter above!</p>
+            </div>
+            
+            <button class="btn btn-success" id="exportBtn">Export Book</button>
+        </div>
+    </div>
+
+    <script>
+        // Check if running as PWA
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            document.getElementById('installInstructions').style.display = 'none';
+        } else {
+            document.getElementById('installInstructions').style.display = 'block';
+        }
+
+        let chapters = [];
+
+        // Load saved chapters
+        function loadChapters() {
+            const saved = localStorage.getItem('proverbsChapters');
+            if (saved) {
+                chapters = JSON.parse(saved);
+                updateChaptersList();
+            }
+        }
+
+        // Save chapters
+        function saveChapters() {
+            localStorage.setItem('proverbsChapters', JSON.stringify(chapters));
+        }
+
+        // Generate chapter
+        document.getElementById('generateBtn').addEventListener('click', async () => {
+            const chapter = parseInt(document.getElementById('chapterInput').value);
+            const contentType = document.getElementById('contentTypeSelect').value;
+            const statusDiv = document.getElementById('generateStatus');
+            const textarea = document.getElementById('contentTextarea');
+            
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status-message info';
+            statusDiv.textContent = 'Generating... This may take 30-60 seconds.';
+            textarea.value = '';
+            
+            try {
+                // Use a simple API or local generation
+                // For iPad, we'll use a web-based API or local storage
+                const prompt = `Write an original ${contentType} on Proverbs chapter ${chapter}. Make it personal, insightful, and original.`;
+                
+                // Simulate generation (in production, use actual API)
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // For now, create sample content
+                const sampleContent = `This is a ${contentType} on Proverbs chapter ${chapter}. 
+
+[In a real implementation, this would connect to an AI API or local service]
+
+The content would be generated here with thoughtful insights and practical application.`;
+                
+                textarea.value = sampleContent;
+                statusDiv.className = 'status-message success';
+                statusDiv.textContent = 'Generated successfully!';
+            } catch (error) {
+                statusDiv.className = 'status-message error';
+                statusDiv.textContent = 'Error: ' + error.message;
+            }
+        });
+
+        // Copy text
+        document.getElementById('copyTextBtn').addEventListener('click', async () => {
+            const text = document.getElementById('contentTextarea').value;
+            if (!text.trim()) {
+                alert('No text to copy!');
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                const statusDiv = document.getElementById('generateStatus');
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'status-message success';
+                statusDiv.textContent = 'Text copied to clipboard!';
+            } catch (error) {
+                alert('Failed to copy: ' + error.message);
+            }
+        });
+
+        // Save chapter
+        document.getElementById('saveChapterBtn').addEventListener('click', () => {
+            const chapter = parseInt(document.getElementById('chapterInput').value);
+            const contentType = document.getElementById('contentTypeSelect').value;
+            const content = document.getElementById('contentTextarea').value;
+            
+            if (!content.trim()) {
+                alert('Please generate content first!');
+                return;
+            }
+            
+            const existingIndex = chapters.findIndex(ch => ch.number === chapter);
+            if (existingIndex >= 0) {
+                chapters[existingIndex] = { number: chapter, contentType, content };
+            } else {
+                chapters.push({ number: chapter, contentType, content });
+            }
+            
+            saveChapters();
+            updateChaptersList();
+            
+            const statusDiv = document.getElementById('generateStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status-message success';
+            statusDiv.textContent = `Chapter ${chapter} saved!`;
+        });
+
+        // Update chapters list
+        function updateChaptersList() {
+            const listDiv = document.getElementById('chaptersList');
+            
+            if (chapters.length === 0) {
+                listDiv.innerHTML = '<p class="empty-state">No chapters saved yet. Generate your first chapter above!</p>';
+                return;
+            }
+            
+            chapters.sort((a, b) => parseInt(a.number) - parseInt(b.number));
+            
+            listDiv.innerHTML = chapters.map(ch => `
+                <div class="chapter-item">
+                    <div class="chapter-title">Chapter ${ch.number}: ${ch.contentType}</div>
+                    <div class="chapter-meta">${ch.content.length} characters</div>
+                </div>
+            `).join('');
+        }
+
+        // Export book
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            if (chapters.length === 0) {
+                alert('Please generate and save at least one chapter first!');
+                return;
+            }
+            
+            let markdown = '# Proverbs Book\n\n';
+            chapters.forEach(ch => {
+                markdown += `## Chapter ${ch.number}: ${ch.contentType}\n\n${ch.content}\n\n---\n\n`;
+            });
+            
+            const blob = new Blob([markdown], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'proverbs-book.md';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Initialize
+        loadChapters();
+    </script>
+</body>
+</html>

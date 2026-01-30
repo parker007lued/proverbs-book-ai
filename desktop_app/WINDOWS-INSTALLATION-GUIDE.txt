@@ -1,0 +1,132 @@
+═══════════════════════════════════════════════════════════════
+  WHAT TO SEND FOR WINDOWS INSTALLATION
+═══════════════════════════════════════════════════════════════
+
+📦 OPTION 1: EXE INSTALLER (BEST - Easiest for Her!)
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Build the Installer (You Do This First)
+─────────────────────────────────────────────────
+1. Open Command Prompt or PowerShell
+2. Navigate to: desktop_app folder
+3. Run: BUILD-WINDOWS-INSTALLER.bat
+4. Wait for build to complete (5-10 minutes)
+5. Installer will be in: dist\Proverbs-Book-AI-Setup.exe
+
+STEP 2: Send to Your Mom
+─────────────────────────
+Send this ONE file:
+   dist\Proverbs-Book-AI-Setup.exe
+
+STEP 3: What She Does
+──────────────────────
+1. Double-clicks Proverbs-Book-AI-Setup.exe
+2. Follows installation wizard
+3. Clicks "Install" or "Next" through prompts
+4. App installs automatically
+5. App opens automatically
+6. On first run, app checks for dependencies
+7. If Ollama not installed, clicks "Install Ollama" button
+8. Everything downloads automatically!
+9. Ready to use!
+
+═══════════════════════════════════════════════════════════════
+
+📦 OPTION 2: INSTALLER SCRIPT (If EXE Doesn't Work)
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Prepare Files
+──────────────────────
+Send these files (ZIP them together):
+   - INSTALLER-WINDOWS.ps1
+   - All files from desktop_app folder (or just the app files)
+
+OR create a ZIP with:
+   - INSTALLER-WINDOWS.ps1
+   - main.js
+   - package.json
+   - index.html
+   - preload.js
+   - renderer.js
+   - styles.css
+   - All other app files
+
+STEP 2: Send to Your Mom
+─────────────────────────
+Send: Proverbs-Book-AI-Windows.zip
+
+STEP 3: What She Does
+──────────────────────
+1. Extracts the ZIP file
+2. Right-clicks INSTALLER-WINDOWS.ps1
+3. Selects "Run with PowerShell"
+4. Clicks "Yes" when asked for permission
+5. Waits for installation (5-10 minutes)
+   - Installs Chocolatey
+   - Installs Ollama
+   - Installs Pandoc
+   - Installs Node.js (if needed)
+   - Downloads AI model (~2GB)
+6. Opens Command Prompt in the folder
+7. Runs: npm start
+8. App opens!
+
+═══════════════════════════════════════════════════════════════
+
+🎯 RECOMMENDED: Use Option 1 (EXE Installer)
+═══════════════════════════════════════════════════════════════
+
+The EXE installer is easiest because:
+✓ She just double-clicks and follows prompts
+✓ No need to extract ZIP files
+✓ No need to run PowerShell scripts
+✓ No need to open Command Prompt
+✓ Everything happens automatically
+✓ App opens automatically after installation
+
+═══════════════════════════════════════════════════════════════
+
+📋 QUICK CHECKLIST
+═══════════════════════════════════════════════════════════════
+
+FOR YOU (Before Sending):
+□ Build Windows installer: Run BUILD-WINDOWS-INSTALLER.bat
+□ Check dist folder for: Proverbs-Book-AI-Setup.exe
+□ Test installer on your Windows computer (optional)
+□ Send the EXE file
+
+FOR YOUR MOM:
+□ Receives Proverbs-Book-AI-Setup.exe
+□ Double-clicks the file
+□ Follows installation wizard
+□ Opens app when done
+□ Clicks "Install Dependencies" if prompted
+□ Uses the app!
+
+═══════════════════════════════════════════════════════════════
+
+🔧 WHAT GETS INSTALLED AUTOMATICALLY
+═══════════════════════════════════════════════════════════════
+
+When she opens the app for the first time:
+✓ Ollama (AI engine) - Downloads from ollama.ai
+✓ Pandoc (book export) - Downloads via Chocolatey
+✓ Node.js (if needed) - Downloads automatically
+✓ AI Model (phi3:mini) - Downloads via Ollama (~2GB)
+✓ All app dependencies - Installs via npm
+
+Everything happens automatically - no manual steps needed!
+
+═══════════════════════════════════════════════════════════════
+
+📁 FILE LOCATIONS
+═══════════════════════════════════════════════════════════════
+
+Build Script:     desktop_app\BUILD-WINDOWS-INSTALLER.bat
+Installer Script: desktop_app\INSTALLER-WINDOWS.ps1
+Output Installer: desktop_app\dist\Proverbs-Book-AI-Setup.exe
+
+═══════════════════════════════════════════════════════════════
+
+✅ SUMMARY: Send the EXE file from dist folder!
+═══════════════════════════════════════════════════════════════

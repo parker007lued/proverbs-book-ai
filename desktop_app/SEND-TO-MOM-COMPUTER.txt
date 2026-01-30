@@ -1,0 +1,87 @@
+═══════════════════════════════════════════════════════════════
+  WHAT TO SEND FOR MAC OR WINDOWS LAPTOP
+═══════════════════════════════════════════════════════════════
+
+📧 FOR MAC (macOS):
+═══════════════════════════════════════════════════════════════
+
+Send these files:
+1. Proverbs-Book-AI-Mac.dmg (or .app file)
+2. INSTALLER-MAC.sh (automatic installer script)
+
+OR send the ZIP file with everything:
+   Proverbs-Book-AI-Mac-Complete.zip
+
+WHAT SHE DOES:
+1. Double-click the .dmg file
+2. Drag app to Applications folder
+3. Open Applications → Proverbs Book AI
+4. App checks for dependencies automatically
+5. If Ollama not installed, click "Install Ollama"
+6. App downloads everything automatically!
+
+═══════════════════════════════════════════════════════════════
+
+📧 FOR WINDOWS:
+═══════════════════════════════════════════════════════════════
+
+Send these files:
+1. Proverbs-Book-AI-Setup.exe (installer)
+2. INSTALLER-WINDOWS.ps1 (automatic installer script)
+
+OR send the ZIP file with everything:
+   Proverbs-Book-AI-Windows-Complete.zip
+
+WHAT SHE DOES:
+1. Right-click INSTALLER-WINDOWS.ps1
+2. Select "Run with PowerShell" (as Administrator)
+3. Script installs everything automatically
+4. Or double-click .exe installer
+5. Follow installation wizard
+6. App opens automatically!
+
+═══════════════════════════════════════════════════════════════
+
+🎯 WHAT GETS INSTALLED AUTOMATICALLY:
+═══════════════════════════════════════════════════════════════
+
+✓ Ollama (AI engine)
+✓ Pandoc (book export)
+✓ Node.js (if needed)
+✓ AI Model (phi3:mini - ~2GB download)
+✓ All app dependencies
+
+Everything downloads and installs automatically!
+
+═══════════════════════════════════════════════════════════════
+
+📱 ALTERNATIVE: USE INSTALLER SCRIPTS
+═══════════════════════════════════════════════════════════════
+
+MAC:
+1. Open Terminal
+2. Navigate to folder: cd ~/Downloads/Proverbs-Book-AI
+3. Run: chmod +x INSTALLER-MAC.sh
+4. Run: ./INSTALLER-MAC.sh
+5. Enter password when asked
+6. Wait for installation (5-10 minutes)
+
+WINDOWS:
+1. Right-click INSTALLER-WINDOWS.ps1
+2. Select "Run with PowerShell"
+3. Click "Yes" when asked for permission
+4. Wait for installation (5-10 minutes)
+
+═══════════════════════════════════════════════════════════════
+
+✅ AFTER INSTALLATION:
+═══════════════════════════════════════════════════════════════
+
+The app will:
+- Check for dependencies on startup
+- Download Ollama if missing
+- Download AI model if missing
+- Start Ollama service automatically
+- Be ready to use immediately!
+
+═══════════════════════════════════════════════════════════════

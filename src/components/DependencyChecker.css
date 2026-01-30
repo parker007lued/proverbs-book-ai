@@ -1,0 +1,105 @@
+.dependency-checker {
+  padding: 1rem 2rem;
+}
+
+.checking {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.dependency-banner {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.dependency-banner h3 {
+  margin: 0 0 0.5rem 0;
+  color: #856404;
+}
+
+.dependency-banner p {
+  margin: 0 0 1rem 0;
+  color: #856404;
+}
+
+.dependency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dependency-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.dependency-name {
+  font-weight: 600;
+  min-width: 150px;
+  color: #333;
+}
+
+.dependency-status {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.dependency-status.missing {
+  color: #dc3545;
+}
+
+.dependency-status.installed {
+  color: #28a745;
+}
+
+.dependency-note {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+
+.install-button {
+  padding: 0.5rem 1rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.install-button:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+.install-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refresh-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.refresh-button:hover {
+  background: #e9ecef;
+}

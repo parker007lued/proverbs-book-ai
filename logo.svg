@@ -1,0 +1,29 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- WilhelmTechCo LLC Logo -->
+  <!-- Outer circular framework -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#B19CD9" stroke-width="8"/>
+  
+  <!-- Inner purple arcs -->
+  <path d="M 100 20 A 70 70 0 0 1 100 180" fill="none" stroke="#6B46C1" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 100 20 A 70 70 0 0 0 100 180" fill="none" stroke="#6B46C1" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Central geometric figure - Stylized W/Tech symbol -->
+  <!-- Left vertical segment -->
+  <path d="M 70 40 L 70 160 L 75 160 L 75 140 L 85 140 L 85 160 L 90 160 L 90 40 L 85 40 L 85 100 L 75 100 L 75 40 Z" fill="#4A90E2"/>
+  
+  <!-- Central vertical segment -->
+  <path d="M 95 40 L 95 160 L 105 160 L 105 40 Z" fill="#4A90E2"/>
+  
+  <!-- Right vertical segment -->
+  <path d="M 110 40 L 110 160 L 115 160 L 115 140 L 125 140 L 125 160 L 130 160 L 130 40 L 125 40 L 125 100 L 115 100 L 115 40 Z" fill="#4A90E2"/>
+  
+  <!-- Horizontal connectors -->
+  <rect x="75" y="80" width="50" height="8" fill="#4A90E2"/>
+  <rect x="75" y="112" width="50" height="8" fill="#4A90E2"/>
+  
+  <!-- Tech accent lines -->
+  <line x1="60" y1="50" x2="70" y2="50" stroke="#4A90E2" stroke-width="3" stroke-linecap="round"/>
+  <line x1="130" y1="50" x2="140" y2="50" stroke="#4A90E2" stroke-width="3" stroke-linecap="round"/>
+  <line x1="60" y1="150" x2="70" y2="150" stroke="#4A90E2" stroke-width="3" stroke-linecap="round"/>
+  <line x1="130" y1="150" x2="140" y2="150" stroke="#4A90E2" stroke-width="3" stroke-linecap="round"/>
+</svg>

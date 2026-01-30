@@ -1,0 +1,20 @@
+#!/bin/bash
+# Get the directory where the script is located
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$DIR/../Resources"
+
+# Find Electron binary
+ELECTRON_BIN=""
+if [ -f "/Applications/Electron.app/Contents/MacOS/Electron" ]; then
+    ELECTRON_BIN="/Applications/Electron.app/Contents/MacOS/Electron"
+elif [ -f "$HOME/Applications/Electron.app/Contents/MacOS/Electron" ]; then
+    ELECTRON_BIN="$HOME/Applications/Electron.app/Contents/MacOS/Electron"
+else
+    echo "Electron not found. Please install Electron first:"
+    echo "  brew install --cask electron"
+    echo "Or download from: https://www.electronjs.org/"
+    exit 1
+fi
+
+# Run the app
+exec "$ELECTRON_BIN" "$DIR/../Resources"

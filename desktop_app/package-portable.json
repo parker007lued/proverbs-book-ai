@@ -1,0 +1,13 @@
+{
+  "name": "proverbs-book-ai-portable",
+  "version": "1.0.0",
+  "description": "Portable version - works on Mac without building",
+  "main": "main.js",
+  "scripts": {
+    "build:portable": "node build-portable.js"
+  },
+  "dependencies": {
+    "electron": "^28.0.0",
+    "axios": "^1.6.0"
+  }
+}

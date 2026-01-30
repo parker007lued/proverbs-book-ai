@@ -1,0 +1,22 @@
+{
+  "name": "proverbs-book-ai-wilhelmtechco",
+  "version": "1.0.0",
+  "description": "Proverbs Book AI - WilhelmTechCo LLC Proprietary Software",
+  "author": "WilhelmTechCo LLC",
+  "license": "PROPRIETARY",
+  "private": true,
+  "scripts": {
+    "protect": "node scripts/protect-code.js",
+    "build:protected": "npm run protect && npm run build",
+    "setup": "npm install && cd backend-api && npm install && cd ../desktop_app && npm install"
+  },
+  "keywords": [
+    "proverbs",
+    "ai",
+    "wilhelmtechco",
+    "proprietary"
+  ],
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

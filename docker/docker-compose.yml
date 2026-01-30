@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  proverbs-book-ai:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: proverbs-book-ai
+    ports:
+      - "11434:11434"  # Ollama
+      - "1420:1420"    # Tauri dev server
+    volumes:
+      - ollama-models:/root/.ollama
+      - app-data:/app/projects
+    environment:
+      - RUST_LOG=info
+    restart: unless-stopped
+
+volumes:
+  ollama-models:
+  app-data:

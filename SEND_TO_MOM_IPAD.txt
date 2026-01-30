@@ -1,0 +1,40 @@
+📱 WHAT TO SEND YOUR MOM FOR iPAD
+==================================
+
+FILE TO ATTACH TO EMAIL:
+------------------------
+File Name: Proverbs-Book-AI.html
+
+Location: desktop_app\ipad-web\Proverbs-Book-AI.html
+
+Full Path: C:\Users\parke\OneDrive\Desktop\Moms AI Model For Proverbs\desktop_app\ipad-web\Proverbs-Book-AI.html
+
+
+HOW TO SEND:
+------------
+1. Open your email program
+2. Create new email to your mom
+3. Attach this file: Proverbs-Book-AI.html
+4. Send!
+
+
+WHAT SHE DOES:
+--------------
+1. Opens email on iPad
+2. Taps the HTML file attachment
+3. It opens in Safari automatically
+4. Taps Share button (bottom of Safari)
+5. Taps "Add to Home Screen"
+6. Done! App appears with cross icon ✝
+
+
+OPTIONAL - INCLUDE INSTRUCTIONS:
+---------------------------------
+You can also attach: INSTRUCTIONS_IPAD.md
+(But the HTML file has instructions built-in!)
+
+
+THAT'S IT!
+----------
+Just send the ONE file: Proverbs-Book-AI.html
+Everything is included in that single file!

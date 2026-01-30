@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Proverbs Book AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Dependency Download Dialog -->
+    <div id="dependencyDialog" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>📦 Setup Required</h2>
+            <p>This application needs to download some dependencies to work properly.</p>
+            <div class="dependency-list">
+                <label>
+                    <input type="checkbox" id="downloadOllama" checked>
+                    <span>Ollama (AI text generation) - ~50MB</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="downloadPandoc" checked>
+                    <span>Pandoc (Book export) - ~20MB</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="downloadModel" checked>
+                    <span>AI Model (Mistral 7B) - ~4GB - Best Quality</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="downloadVisionModel">
+                    <span>Vision Model (LLaVA 7B) - ~4GB - For Image Understanding (Optional)</span>
+                </label>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" id="downloadBtn">Download & Install</button>
+                <button class="btn btn-secondary" id="skipBtn">Skip for Now</button>
+            </div>
+            <div id="downloadProgress" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="progressText">Preparing download...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <header class="app-header">
+            <h1>📖 Proverbs Book AI</h1>
+            <div class="status-indicator">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Ready</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Chapter Generator -->
+            <div class="panel">
+                <h2>Generate Chapter Content</h2>
+                
+                <div class="form-group">
+                    <label>Chapter Number (1-31):</label>
+                    <input type="number" id="chapterInput" min="1" max="31" value="1" class="input">
+                    <button class="btn btn-small" id="loadChapterBtn">Load Chapter</button>
+                    <div id="chapterPreview" class="chapter-preview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Content Type:</label>
+                    <select id="contentTypeSelect" class="select">
+                        <option value="commentary">Commentary</option>
+                        <option value="summary">Summary</option>
+                        <option value="devotional">Devotional</option>
+                        <option value="reflection">Personal Reflection</option>
+                        <option value="study">Study Guide</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>AI Model:</label>
+                    <select id="modelSelect" class="select">
+                        <option value="mistral:7b" selected>Mistral 7B (Recommended - Best Quality)</option>
+                        <option value="llama3.2:3b">Llama 3.2 3B (Balanced)</option>
+                        <option value="phi3:mini">Phi-3 Mini (Fastest)</option>
+                        <option value="llava:7b">LLaVA 7B (Vision - Understands Images)</option>
+                    </select>
+                    <small style="color: #666; display: block; margin-top: 5px;">
+                        Mistral 7B recommended for best text quality. LLaVA for image understanding.
+                    </small>
+                </div>
+
+                <button class="btn btn-primary btn-large" id="generateBtn">
+                    Generate Chapter
+                </button>
+
+                <div class="status-message" id="generateStatus" style="display: none;"></div>
+
+                <div class="form-group">
+                    <label>Generated Content:</label>
+                    <textarea id="contentTextarea" class="textarea" placeholder="Generated content will appear here..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" id="saveChapterBtn">Save Chapter</button>
+                    <button class="btn btn-secondary" id="generateImageBtn">Generate Image</button>
+                    <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="panel">
+                <h2>Your Progress</h2>
+                <div id="progressList" class="progress-list">
+                    <p class="empty-state">No chapters generated yet.</p>
+                </div>
+            </div>
+
+            <!-- Book Assembly -->
+            <div class="panel">
+                <h2>Your Book</h2>
+                <div id="chaptersList" class="chapters-list">
+                    <p class="empty-state">No chapters saved yet. Generate your first chapter above!</p>
+                </div>
+                
+                <div class="export-section">
+                    <button class="btn btn-success btn-large" id="exportPdfBtn">Export as PDF</button>
+                    <button class="btn btn-success btn-large" id="exportEpubBtn">Export as EPUB</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

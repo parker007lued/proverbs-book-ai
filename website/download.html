@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - Proverbs Book AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 36px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .privacy-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+        }
+
+        .privacy-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .privacy-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .platform-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .platform-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .platform-card.highlighted {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .platform-card h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .platform-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .download-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .download-btn {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .download-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .version-info {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 Download Proverbs Book AI</h1>
+        <p class="subtitle">Choose your platform and download the app</p>
+
+        <!-- Privacy Policy Section -->
+        <div class="privacy-section" id="privacySection">
+            <h2>Privacy Policy & Terms</h2>
+            <p>Before downloading, please read and accept our Privacy Policy and Terms of Service.</p>
+            <p><strong>Data Collection:</strong> We collect account information, usage data, and sync data to provide and improve our services. All data is encrypted and stored securely.</p>
+            <p><strong>By downloading, you agree to:</strong></p>
+            <ul style="margin-left: 30px; color: #666; line-height: 2;">
+                <li>Our Privacy Policy</li>
+                <li>Our Terms of Service</li>
+                <li>Data collection as described</li>
+            </ul>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="privacyAccept" required>
+                <label for="privacyAccept">
+                    I have read and agree to the Privacy Policy and Terms of Service <span style="color: #dc3545;">*</span>
+                </label>
+            </div>
+
+            <button class="download-btn" id="acceptBtn" onclick="acceptPrivacy()" disabled style="width: 100%; margin-top: 10px;">
+                Accept & Continue to Downloads
+            </button>
+        </div>
+
+        <!-- Platform Selection (Hidden until privacy accepted) -->
+        <div id="platformSelection" class="hidden">
+            <h2 style="margin-bottom: 20px;">Select Your Platform</h2>
+            
+            <div class="platform-grid">
+                <!-- Windows -->
+                <div class="platform-card" data-platform="windows">
+                    <h3>🪟 Windows</h3>
+                    <p>Windows 10/11</p>
+                    <div class="download-links">
+                        <a href="#" class="download-btn" id="windowsDownload" onclick="downloadFile('windows')">
+                            Download .exe Installer
+                        </a>
+                        <span class="version-info" id="windowsVersion">Latest version</span>
+                    </div>
+                </div>
+
+                <!-- macOS -->
+                <div class="platform-card" data-platform="mac">
+                    <h3>🍎 macOS</h3>
+                    <p>macOS 10.14+</p>
+                    <div class="download-links">
+                        <a href="#" class="download-btn" id="macDownload" onclick="downloadFile('mac')">
+                            Download .dmg Installer
+                        </a>
+                        <span class="version-info" id="macVersion">Latest version</span>
+                    </div>
+                </div>
+
+                <!-- Linux -->
+                <div class="platform-card" data-platform="linux">
+                    <h3>🐧 Linux</h3>
+                    <p>Ubuntu, Debian, Fedora, etc.</p>
+                    <div class="download-links">
+                        <a href="#" class="download-btn" id="linuxAppImage" onclick="downloadFile('linux', 'appimage')">
+                            Download AppImage
+                        </a>
+                        <a href="#" class="download-btn" id="linuxDeb" onclick="downloadFile('linux', 'deb')">
+                            Download .deb Package
+                        </a>
+                        <a href="#" class="download-btn" id="linuxRpm" onclick="downloadFile('linux', 'rpm')">
+                            Download .rpm Package
+                        </a>
+                        <span class="version-info" id="linuxVersion">Latest version</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://your-api-domain.com/api'; // Update with your API URL
+
+        // Check privacy acceptance
+        document.getElementById('privacyAccept').addEventListener('change', function() {
+            document.getElementById('acceptBtn').disabled = !this.checked;
+        });
+
+        function acceptPrivacy() {
+            if (!document.getElementById('privacyAccept').checked) {
+                alert('Please accept the Privacy Policy to continue');
+                return;
+            }
+
+            // Save acceptance
+            localStorage.setItem('privacy_accepted', 'true');
+            localStorage.setItem('privacy_accepted_date', new Date().toISOString());
+
+            // Hide privacy section, show platform selection
+            document.getElementById('privacySection').classList.add('hidden');
+            document.getElementById('platformSelection').classList.remove('hidden');
+
+            // Load latest versions
+            loadLatestVersions();
+
+            // Highlight current platform
+            detectPlatform();
+        }
+
+        function detectPlatform() {
+            const platform = navigator.platform.toLowerCase();
+            if (platform.includes('win')) {
+                document.querySelector('[data-platform="windows"]').classList.add('highlighted');
+            } else if (platform.includes('mac')) {
+                document.querySelector('[data-platform="mac"]').classList.add('highlighted');
+            } else if (platform.includes('linux')) {
+                document.querySelector('[data-platform="linux"]').classList.add('highlighted');
+            }
+        }
+
+        async function loadLatestVersions() {
+            try {
+                const platforms = ['windows', 'mac', 'linux'];
+                for (const platform of platforms) {
+                    const res = await fetch(`${API_URL}/updates/check/${platform}`);
+                    const data = await res.json();
+                    
+                    if (data.success && data.updateAvailable) {
+                        const versionEl = document.getElementById(`${platform}Version`);
+                        if (versionEl) {
+                            versionEl.textContent = `Version ${data.version}`;
+                        }
+                        
+                        // Update download links
+                        updateDownloadLink(platform, data.downloadUrl);
+                    }
+                }
+            } catch (error) {
+                console.error('Load versions error:', error);
+            }
+        }
+
+        function updateDownloadLink(platform, url) {
+            const link = document.getElementById(`${platform}Download`);
+            if (link) {
+                link.href = url;
+            }
+        }
+
+        function downloadFile(platform, format = null) {
+            // Track download
+            fetch(`${API_URL}/analytics/download`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ platform, format, timestamp: new Date().toISOString() })
+            }).catch(err => console.error('Analytics error:', err));
+
+            // Download will proceed via href
+        }
+
+        // Check if already accepted
+        if (localStorage.getItem('privacy_accepted') === 'true') {
+            document.getElementById('privacySection').classList.add('hidden');
+            document.getElementById('platformSelection').classList.remove('hidden');
+            loadLatestVersions();
+            detectPlatform();
+        }
+    </script>
+</body>
+</html>

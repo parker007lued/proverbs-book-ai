@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Proverbs Book AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>📖 Proverbs Book AI</h1>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot"></span>
+                <span id="statusText">Checking dependencies...</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Daily Scripture & Orthodox Calendar Panel -->
+            <div class="panel" id="dailyScripturePanel">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h2>📖 Daily Scripture & Orthodox Calendar</h2>
+                    <button class="btn btn-secondary btn-small" id="toggleScriptureBtn" style="padding: 8px 16px; font-size: 14px;">Hide</button>
+                </div>
+                
+                <div id="scriptureContent">
+                    <!-- Orthodox Calendar Info -->
+                    <div class="calendar-info" id="calendarInfo" style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <div id="feastInfo" style="display: none; margin-bottom: 10px;">
+                            <strong style="color: #667eea;">🎉 Feast Day:</strong>
+                            <span id="feastName"></span>
+                        </div>
+                        <div id="fastingInfo" style="display: none;">
+                            <strong style="color: #dc3545;">🍞 Fasting Day:</strong>
+                            <span id="fastingName"></span>
+                            <div id="fastingReason" style="font-size: 14px; color: #666; margin-top: 5px;"></div>
+                        </div>
+                        <div id="normalDay" style="display: none; color: #666;">
+                            Regular day in the Orthodox calendar
+                        </div>
+                    </div>
+                    
+                    <!-- Daily Scripture -->
+                    <div class="scripture-reading" id="scriptureReading">
+                        <h3 style="margin-bottom: 10px;">Today's Reading</h3>
+                        <div id="scriptureText" style="line-height: 1.8; color: #333;">
+                            <p style="font-style: italic; color: #666;">Loading today's scripture...</p>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <button class="btn btn-secondary btn-small" id="refreshScriptureBtn" style="padding: 8px 16px; font-size: 14px;">Refresh Reading</button>
+                            <button class="btn btn-secondary btn-small" id="hideScriptureBtn" style="padding: 8px 16px; font-size: 14px; margin-left: 10px;">Don't Show Today</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dependency Check Panel -->
+            <div class="panel" id="dependencyPanel" style="display: none;">
+                <h2>Setup Required</h2>
+                <div class="dependency-list">
+                    <div class="dependency-item">
+                        <span class="dependency-name">Ollama</span>
+                        <span class="dependency-status" id="ollamaStatus">Checking...</span>
+                        <button class="btn btn-primary" id="installOllamaBtn" style="display: none;">Install</button>
+                    </div>
+                    <div class="dependency-item">
+                        <span class="dependency-name">Pandoc</span>
+                        <span class="dependency-status" id="pandocStatus">Checking...</span>
+                        <button class="btn btn-primary" id="installPandocBtn" style="display: none;">Install</button>
+                    </div>
+                    <div class="dependency-item">
+                        <span class="dependency-name">AI Model</span>
+                        <span class="dependency-status" id="modelStatus">Checking...</span>
+                        <button class="btn btn-primary" id="downloadModelBtn" style="display: none;">Download</button>
+                        <div class="progress-bar" id="modelProgress" style="display: none;">
+                            <div class="progress-fill" id="modelProgressFill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Editor Panel -->
+            <div class="panel" id="editorPanel">
+                <h2>Generate Chapter Content</h2>
+                
+                <div class="form-group">
+                    <label>Chapter Number (1-31):</label>
+                    <input type="number" id="chapterInput" min="1" max="31" value="1" class="input">
+                </div>
+
+                <div class="form-group">
+                    <label>Content Type:</label>
+                    <select id="contentTypeSelect" class="select">
+                        <option value="commentary">Commentary</option>
+                        <option value="summary">Summary</option>
+                        <option value="devotional">Devotional</option>
+                        <option value="reflection">Personal Reflection</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>AI Model:</label>
+                    <select id="modelSelect" class="select">
+                        <option value="phi3:mini">Phi-3 Mini (Fastest, ~2GB)</option>
+                        <option value="mistral:7b">Mistral 7B (Best Quality, ~4GB)</option>
+                        <option value="llama3.2:3b">Llama 3.2 3B (Balanced, ~2GB)</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary btn-large" id="generateBtn">
+                    Generate Chapter
+                </button>
+
+                <div class="status-message" id="generateStatus" style="display: none;"></div>
+
+                <div class="form-group">
+                    <label>Generated Content:</label>
+                    <textarea id="contentTextarea" class="textarea" placeholder="Generated content will appear here..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" id="saveChapterBtn">Save Chapter</button>
+                    <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                </div>
+            </div>
+
+            <!-- Book Assembly Panel -->
+            <div class="panel">
+                <h2>Your Book</h2>
+                <div id="chaptersList" class="chapters-list">
+                    <p class="empty-state">No chapters yet. Generate your first chapter above!</p>
+                </div>
+                
+                <div class="export-section">
+                    <button class="btn btn-success btn-large" id="exportPdfBtn">Export as PDF</button>
+                    <button class="btn btn-success btn-large" id="exportEpubBtn">Export as EPUB</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

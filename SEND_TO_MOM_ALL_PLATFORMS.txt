@@ -1,0 +1,54 @@
+📱 WHAT TO SEND YOUR MOM
+========================
+
+FOR iPAD (Text Message OR Email):
+----------------------------------
+File: desktop_app\ipad-web\Proverbs-Book-AI.html
+Size: ~18 KB
+
+HOW TO SEND VIA TEXT:
+1. Open Messages app (or iMessage)
+2. Start new message to your mom
+3. Tap the attachment/paperclip icon
+4. Select "Files" or "Browse"
+5. Find: Proverbs-Book-AI.html
+6. Attach and send!
+
+WHAT SHE DOES:
+1. Opens text message on iPad
+2. Taps the HTML file attachment
+3. It opens in Safari
+4. Taps Share → "Add to Home Screen"
+5. Done! App appears with cross icon ✝
+
+
+FOR MAC COMPUTER (Email OR Cloud Storage):
+-------------------------------------------
+File: desktop_app\Proverbs-Book-AI-Standalone.zip
+Size: ~32 KB
+
+HOW TO SEND:
+Option 1 - Email:
+1. Attach ZIP file to email
+2. Send to your mom
+
+Option 2 - Cloud Storage (if email too large):
+1. Upload to iCloud, Google Drive, Dropbox, etc.
+2. Share link with your mom
+3. She downloads and extracts
+
+WHAT SHE DOES:
+1. Extracts ZIP file
+2. Opens Terminal (see HOW_TO_OPEN_TERMINAL.md)
+3. Runs: npm install
+4. Runs: npm start
+5. App opens!
+
+
+QUICK REFERENCE:
+----------------
+iPad: desktop_app\ipad-web\Proverbs-Book-AI.html
+Mac:  desktop_app\Proverbs-Book-AI-Standalone.zip
+
+
+BOTH ARE READY TO SEND!

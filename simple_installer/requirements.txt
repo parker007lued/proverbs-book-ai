@@ -1,0 +1,2 @@
+# Simple installer requirements - minimal dependencies
+# Most functionality uses system tools (Ollama, Pandoc)

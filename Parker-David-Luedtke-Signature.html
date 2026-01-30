@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parker David Luedtke - Digital Signature</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .signature-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        .signature-wrapper {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', 'Comic Sans MS', cursive;
+            font-size: 48px;
+            color: #1a1a1a;
+            font-weight: 400;
+            letter-spacing: 2px;
+            transform: rotate(-2deg);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* SVG Signature - More realistic */
+        .signature-svg {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        .signature-path {
+            fill: none;
+            stroke: #1a1a1a;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signature-container">
+        <h1>Digital Signature</h1>
+        
+        <div class="signature-wrapper">
+            <!-- SVG Signature - Realistic handwritten style -->
+            <svg class="signature-svg" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Parker -->
+                <path class="signature-path" d="M 20 80 Q 25 60, 35 70 T 60 75 Q 75 75, 85 70 Q 95 65, 105 70 T 125 75 Q 140 75, 150 70 Q 160 65, 170 70 T 190 75 Q 200 75, 210 70 Q 220 65, 230 70 T 250 75" />
+                <path class="signature-path" d="M 250 75 Q 260 70, 270 75 T 290 80 Q 300 85, 310 80 Q 320 75, 330 80 T 350 85" />
+                
+                <!-- David -->
+                <path class="signature-path" d="M 370 75 Q 380 60, 390 70 T 410 75 Q 420 70, 430 75 T 450 80 Q 460 75, 470 80 T 490 85" />
+                <path class="signature-path" d="M 490 85 Q 500 80, 510 85 T 530 90 Q 540 85, 550 90" />
+                
+                <!-- Luedtke -->
+                <path class="signature-path" d="M 20 120 Q 30 110, 40 115 T 60 120 Q 70 115, 80 120 T 100 125 Q 110 120, 120 125 T 140 130" />
+                <path class="signature-path" d="M 140 130 Q 150 125, 160 130 T 180 135 Q 190 130, 200 135 T 220 140 Q 230 135, 240 140 T 260 145 Q 270 140, 280 145 T 300 150" />
+                <path class="signature-path" d="M 300 150 Q 310 145, 320 150 T 340 155 Q 350 150, 360 155 T 380 160" />
+                <path class="signature-path" d="M 380 160 Q 390 155, 400 160 T 420 165 Q 430 160, 440 165 T 460 170" />
+            </svg>
+        </div>
+
+        <!-- Text Signature Alternative -->
+        <div class="signature-wrapper" style="display: none;" id="textSignature">
+            <div class="signature">Parker David Luedtke</div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn btn-primary" onclick="copySignature()">Copy Signature</button>
+            <button class="btn btn-secondary" onclick="downloadSignature()">Download as PNG</button>
+            <button class="btn btn-secondary" onclick="printSignature()">Print</button>
+        </div>
+
+        <div class="info">
+            <strong>Note:</strong> This is a digital representation of the signature. You can copy it, download it as an image, or print it for use in documents.
+        </div>
+    </div>
+
+    <script>
+        function copySignature() {
+            const svg = document.querySelector('.signature-svg');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            canvas.width = 600;
+            canvas.height = 150;
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+                canvas.toBlob(function(blob) {
+                    navigator.clipboard.write([
+                        new ClipboardItem({ 'image/png': blob })
+                    ]).then(() => {
+                        alert('Signature copied to clipboard!');
+                    }).catch(err => {
+                        console.error('Failed to copy:', err);
+                        alert('Could not copy to clipboard. Try downloading instead.');
+                    });
+                });
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        }
+
+        function downloadSignature() {
+            const svg = document.querySelector('.signature-svg');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            canvas.width = 1200;
+            canvas.height = 300;
+            
+            img.onload = function() {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Parker-David-Luedtke-Signature.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        }
+
+        function printSignature() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

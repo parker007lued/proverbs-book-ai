@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Proverbs Book AI - Donate</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .glory-badge {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .glory-badge p {
+            color: #333;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .glory-badge strong {
+            color: #667eea;
+        }
+
+        .donation-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .amount-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .amount-btn {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .amount-btn:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .amount-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .custom-amount {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .custom-amount input {
+            flex: 1;
+        }
+
+        .donate-btn {
+            width: 100%;
+            padding: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .donate-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .donate-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .optional-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .free-emphasis {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .free-emphasis strong {
+            color: #856404;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💝 Support This Project</h1>
+            <p>Proverbs Book AI is <strong>completely free</strong> and created <strong>for God's glory</strong></p>
+        </div>
+
+        <div class="free-emphasis">
+            <strong>✨ This project is FREE. Donations are optional and appreciated, but never required! ✨</strong>
+        </div>
+
+        <div class="glory-badge">
+            <p><strong>Created for God's Glory</strong><br>
+            This project is free and open source. All features are available without payment. 
+            If you find it helpful and want to support continued development, donations are gratefully accepted.</p>
+        </div>
+
+        <form id="donationForm" class="donation-form">
+            <div class="form-group">
+                <label>Donation Amount</label>
+                <div class="amount-buttons">
+                    <button type="button" class="amount-btn" data-amount="5">$5</button>
+                    <button type="button" class="amount-btn" data-amount="10">$10</button>
+                    <button type="button" class="amount-btn" data-amount="25">$25</button>
+                    <button type="button" class="amount-btn" data-amount="50">$50</button>
+                    <button type="button" class="amount-btn" data-amount="100">$100</button>
+                    <button type="button" class="amount-btn" data-amount="custom">Custom</button>
+                </div>
+                <div class="custom-amount" id="customAmount" style="display: none;">
+                    <span>$</span>
+                    <input type="number" id="customAmountInput" placeholder="Enter amount" min="1" step="0.01">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Name (Optional)</label>
+                <input type="text" id="donorName" placeholder="Your name">
+                <span class="optional-note">Optional - can remain anonymous</span>
+            </div>
+
+            <div class="form-group">
+                <label>Email (Optional)</label>
+                <input type="email" id="donorEmail" placeholder="your@email.com">
+                <span class="optional-note">Optional - for receipt only</span>
+            </div>
+
+            <div class="form-group">
+                <label>Message (Optional)</label>
+                <textarea id="donorMessage" rows="3" placeholder="Thank you message or prayer request..."></textarea>
+                <span class="optional-note">Optional - share encouragement or prayer requests</span>
+            </div>
+
+            <!-- Stripe Card Element -->
+            <div class="form-group" id="card-element-container" style="display: none;">
+                <label>Card Details</label>
+                <div id="card-element"></div>
+                <div id="card-errors" role="alert" style="color: #dc3545; margin-top: 10px;"></div>
+            </div>
+
+            <button type="submit" class="donate-btn" id="donateBtn">
+                Donate Securely via Stripe
+            </button>
+
+            <div id="message" class="message"></div>
+        </form>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api'; // Update with your API URL for production
+        const STRIPE_PUBLIC_KEY = 'pk_live_51QvQX2C18TJUjM0RW8mIoZ1QooTLwQ19dQj7k6039uhJCifdtbH9ZFmGzdKeLx2ZE6hFocxb3XeolH29TitHFnMj00XO8kXEAf';
+        const stripe = Stripe(STRIPE_PUBLIC_KEY);
+        let cardElement = null;
+        let elements = null;
+
+        let selectedAmount = null;
+
+        // Initialize Stripe Elements when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            elements = stripe.elements();
+            cardElement = elements.create('card', {
+                style: {
+                    base: {
+                        fontSize: '16px',
+                        color: '#333',
+                        '::placeholder': {
+                            color: '#aab7c4',
+                        },
+                    },
+                },
+            });
+        });
+
+        // Amount button handlers
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                if (btn.dataset.amount === 'custom') {
+                    document.getElementById('customAmount').style.display = 'flex';
+                    selectedAmount = null;
+                } else {
+                    document.getElementById('customAmount').style.display = 'none';
+                    selectedAmount = parseFloat(btn.dataset.amount);
+                }
+            });
+        });
+
+        // Custom amount input
+        document.getElementById('customAmountInput').addEventListener('input', (e) => {
+            selectedAmount = parseFloat(e.target.value);
+        });
+
+        // Form submission
+        document.getElementById('donationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const amount = selectedAmount || parseFloat(document.getElementById('customAmountInput').value);
+            if (!amount || amount < 1) {
+                showMessage('Please select or enter a donation amount', 'error');
+                return;
+            }
+
+            const name = document.getElementById('donorName').value || 'Anonymous';
+            const email = document.getElementById('donorEmail').value || '';
+            const message = document.getElementById('donorMessage').value || '';
+
+            const donateBtn = document.getElementById('donateBtn');
+            donateBtn.disabled = true;
+            donateBtn.textContent = 'Processing...';
+
+            try {
+                // Create payment intent
+                const response = await fetch(`${API_URL}/donations/create-intent`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount, name, email, message })
+                });
+
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error(data.error || 'Failed to create donation');
+                }
+
+                // Show and mount card element
+                const cardContainer = document.getElementById('card-element-container');
+                if (cardContainer.style.display === 'none') {
+                    cardContainer.style.display = 'block';
+                    if (!cardElement) {
+                        elements = stripe.elements();
+                        cardElement = elements.create('card');
+                        cardElement.mount('#card-element');
+                        
+                        cardElement.on('change', ({error}) => {
+                            const displayError = document.getElementById('card-errors');
+                            if (error) {
+                                displayError.textContent = error.message;
+                            } else {
+                                displayError.textContent = '';
+                            }
+                        });
+                    }
+                    // Wait for card element to be ready
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+                
+                const { error, paymentIntent } = await stripe.confirmCardPayment(data.clientSecret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: {
+                            name: name,
+                            email: email
+                        }
+                    }
+                });
+
+                if (error) {
+                    throw new Error(error.message);
+                }
+
+                showMessage('Thank you for your donation! God bless you! 🙏', 'success');
+                document.getElementById('donationForm').reset();
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById('customAmount').style.display = 'none';
+
+            } catch (error) {
+                showMessage('Error: ' + error.message, 'error');
+            } finally {
+                donateBtn.disabled = false;
+                donateBtn.textContent = 'Donate Securely via Stripe';
+            }
+        });
+
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+PROVERBS BOOK AI - INSTALLATION INSTRUCTIONS
+=============================================
+
+FOR YOUR MOTHER - SIMPLE INSTRUCTIONS
+--------------------------------------
+
+OPTION 1: EASIEST - Use Simple Installer (Recommended)
+-------------------------------------------------------
+If you have Python installed:
+1. Go back to the main folder
+2. Find "simple_installer" folder
+3. Double-click "install.py"
+4. Everything installs automatically!
+
+OPTION 2: Use This Portable App
+--------------------------------
+1. Install Electron first:
+   - Open Terminal (Applications → Utilities → Terminal)
+   - Type: brew install --cask electron
+   - Press Enter
+   - Wait for installation
+
+2. Double-click "Proverbs Book AI.app"
+   - Or right-click → Open
+
+3. First time setup:
+   - App will install dependencies automatically
+   - This takes 5-10 minutes
+   - Just wait - everything happens automatically!
+
+OPTION 3: Create DMG Installer (If you have Mac access)
+--------------------------------------------------------
+1. Open Terminal
+2. Type: chmod +x create-dmg.sh
+3. Type: ./create-dmg.sh
+4. This creates a DMG installer file
+5. Double-click DMG to install like any Mac app
+
+TROUBLESHOOTING
+---------------
+- "App can't be opened": Right-click → Open (first time only)
+- "Electron not found": Install Electron (see Option 2, step 1)
+- App won't start: Make sure you have internet connection
+
+NEED HELP?
+----------
+The app will guide you through setup on first launch.
+Everything installs automatically - just wait!

@@ -1,0 +1,63 @@
+═══════════════════════════════════════════════════════════════
+  EASY WINDOWS INSTALLATION (NO .BAT FILES!)
+═══════════════════════════════════════════════════════════════
+
+📧 WHAT TO SEND:
+═══════════════════════════════════════════════════════════════
+
+Send these files:
+1. INSTALL-WINDOWS.html (opens in browser - easy guide!)
+2. INSTALLER-WINDOWS.ps1 (PowerShell installer script)
+3. All app files (or ZIP them together)
+
+═══════════════════════════════════════════════════════════════
+
+🎯 EASIEST METHOD:
+═══════════════════════════════════════════════════════════════
+
+1. Send: INSTALL-WINDOWS.html
+2. She opens it in her browser
+3. Follows the step-by-step instructions
+4. That's it!
+
+The HTML file shows:
+- Clear instructions
+- Copy-paste commands
+- Visual guide
+- No confusing .bat files
+
+═══════════════════════════════════════════════════════════════
+
+📋 WHAT SHE DOES:
+═══════════════════════════════════════════════════════════════
+
+Step 1: Open INSTALL-WINDOWS.html
+- Double-clicks the file
+- Opens in browser automatically
+- Shows clear instructions
+
+Step 2: Run PowerShell Script
+- Right-clicks INSTALLER-WINDOWS.ps1
+- Selects "Run with PowerShell"
+- Clicks "Yes" for permission
+- Waits for installation (5-10 minutes)
+
+Step 3: Use the App
+- Runs: npm start
+- Or double-clicks app icon
+- App opens!
+
+═══════════════════════════════════════════════════════════════
+
+✅ NEW FEATURES IN THE APP:
+═══════════════════════════════════════════════════════════════
+
+✓ Daily Scripture - Optional daily readings
+✓ Orthodox Calendar - Fast days & feast days
+✓ Fast Day Reminders - Shows when fasting
+✓ Feast Day Notifications - Shows feast days
+✓ Hide/Show Scripture - User choice
+
+Everything is optional - users can choose to read or not!
+
+═══════════════════════════════════════════════════════════════

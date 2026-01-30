@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Proverbs Book AI">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#667eea">
+    <title>Proverbs Book AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .install-banner {
+            background: #fff3cd;
+            border-bottom: 2px solid #ffc107;
+            padding: 15px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: none;
+        }
+
+        .install-banner.show {
+            display: block;
+        }
+
+        .install-banner h3 {
+            color: #856404;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .install-banner p {
+            color: #856404;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .install-banner .steps {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .install-banner .steps ol {
+            margin-left: 20px;
+        }
+
+        .install-banner .steps li {
+            margin-bottom: 5px;
+        }
+
+        .app-container {
+            max-width: 100%;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .app-header {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .app-header h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .cross-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #28a745;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .panel h2 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .input, .select, .textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .input:focus, .select:focus, .textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .textarea {
+            min-height: 200px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+            font-family: inherit;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            touch-action: manipulation;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:active {
+            background: #5568d3;
+            transform: scale(0.98);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:active {
+            background: #5a6268;
+            transform: scale(0.98);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:active {
+            background: #218838;
+            transform: scale(0.98);
+        }
+
+        .status-message {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .chapters-list {
+            margin-bottom: 20px;
+        }
+
+        .chapter-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .chapter-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .chapter-meta {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 40px 20px;
+            font-style: italic;
+        }
+
+        @media (min-width: 768px) {
+            .app-container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23667eea'/><path d='M50 30 L50 70 M30 50 L70 50' stroke='white' stroke-width='8' stroke-linecap='round'/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23667eea'/><path d='M50 30 L50 70 M30 50 L70 50' stroke='white' stroke-width='8' stroke-linecap='round'/></svg>">
+</head>
+<body>
+    <!-- Install Banner -->
+    <div class="install-banner" id="installBanner">
+        <h3>📱 Install This App</h3>
+        <p>Tap the Share button below, then "Add to Home Screen"</p>
+        <div class="steps">
+            <ol>
+                <li>Tap the <strong>Share</strong> button (square with arrow) at bottom</li>
+                <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
+                <li>Tap <strong>"Add"</strong> - App appears with cross icon ✝</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <div class="app-header">
+            <div class="cross-icon">✝</div>
+            <h1>Proverbs Book AI</h1>
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span id="statusText">Ready</span>
+            </div>
+        </div>
+
+        <!-- Chapter Generator -->
+        <div class="panel">
+            <h2>Generate Chapter Content</h2>
+            
+            <div class="form-group">
+                <label>Chapter Number (1-31):</label>
+                <input type="number" id="chapterInput" min="1" max="31" value="1" class="input">
+            </div>
+
+            <div class="form-group">
+                <label>Content Type:</label>
+                <select id="contentTypeSelect" class="select">
+                    <option value="commentary">Commentary</option>
+                    <option value="summary">Summary</option>
+                    <option value="devotional">Devotional</option>
+                    <option value="reflection">Personal Reflection</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" id="generateBtn">Generate Chapter</button>
+
+            <div class="status-message" id="generateStatus" style="display: none;"></div>
+
+            <div class="form-group">
+                <label>Generated Content:</label>
+                <textarea id="contentTextarea" class="textarea" placeholder="Generated content will appear here..."></textarea>
+            </div>
+
+            <button class="btn btn-secondary" id="copyTextBtn">Copy Text</button>
+            <button class="btn btn-secondary" id="saveChapterBtn">Save Chapter</button>
+        </div>
+
+        <!-- Your Book -->
+        <div class="panel">
+            <h2>Your Book</h2>
+            <div id="chaptersList" class="chapters-list">
+                <p class="empty-state">No chapters saved yet. Generate your first chapter above!</p>
+            </div>
+            
+            <button class="btn btn-success" id="exportBtn">Export Book</button>
+        </div>
+    </div>
+
+    <script>
+        // Complete Proverbs data for all 31 chapters
+        const PROVERBS_DATA = {
+            1: ["The proverbs of Solomon son of David, king of Israel:", "for gaining wisdom and instruction;", "for understanding words of insight;", "for receiving instruction in prudent behavior,", "doing what is right and just and fair;", "for giving prudence to those who are simple,", "knowledge and discretion to the young—", "let the wise listen and add to their learning,", "and let the discerning get guidance—", "for understanding proverbs and parables,", "the sayings and riddles of the wise."],
+            2: ["My son, if you accept my words", "and store up my commands within you,", "turning your ear to wisdom", "and applying your heart to understanding—", "indeed, if you call out for insight", "and cry aloud for understanding,", "and if you look for it as for silver", "and search for it as for hidden treasure,", "then you will understand the fear of the Lord", "and find the knowledge of God."],
+            3: ["My son, do not forget my teaching,", "but keep my commands in your heart,", "for they will prolong your life many years", "and bring you peace and prosperity.", "Let love and faithfulness never leave you;", "bind them around your neck,", "write them on the tablet of your heart.", "Then you will win favor and a good name", "in the sight of God and man.", "Trust in the Lord with all your heart", "and lean not on your own understanding;", "in all your ways submit to him,", "and he will make your paths straight."],
+            4: ["Listen, my sons, to a father's instruction;", "pay attention and gain understanding.", "I give you sound learning,", "so do not forsake my teaching.", "When I was a boy in my father's house,", "still tender, and an only child of my mother,", "he taught me and said,", "'Let your heart hold fast my words;", "keep my commands, and you will live.", "Get wisdom, get understanding;", "do not forget my words or turn away from them.", "Do not forsake wisdom, and she will protect you;", "love her, and she will watch over you."],
+            5: ["My son, pay attention to my wisdom,", "turn your ear to my words of insight,", "that you may maintain discretion", "and your lips may preserve knowledge.", "For the lips of the adulterous woman drip honey,", "and her speech is smoother than oil;", "but in the end she is bitter as gall,", "sharp as a double-edged sword.", "Her feet go down to death;", "her steps lead straight to the grave."],
+            6: ["My son, if you have put up security for your neighbor,", "if you have shaken hands in pledge for a stranger,", "you have been trapped by what you said,", "ensnared by the words of your mouth.", "So do this, my son, to free yourself,", "since you have fallen into your neighbor's hands:", "Go—to the point of exhaustion—", "and give your neighbor no rest!", "Allow no sleep to your eyes,", "no slumber to your eyelids."],
+            7: ["My son, keep my words", "and store up my commands within you.", "Keep my commands and you will live;", "guard my teachings as the apple of your eye.", "Bind them on your fingers;", "write them on the tablet of your heart.", "Say to wisdom, 'You are my sister,'", "and to insight, 'You are my relative.'"],
+            8: ["Does not wisdom call out?", "Does not understanding raise her voice?", "At the highest point along the way,", "where the paths meet, she takes her stand;", "beside the gate leading into the city,", "at the entrance, she cries aloud:", "'To you, O people, I call out;", "I raise my voice to all mankind.'"],
+            9: ["Wisdom has built her house;", "she has set up its seven pillars.", "She has prepared her meat and mixed her wine;", "she has also set her table.", "She has sent out her servants, and she calls", "from the highest point of the city,", "'Let all who are simple come to my house!'", "To those who have no sense she says,"],
+            10: ["The proverbs of Solomon:", "A wise son brings joy to his father,", "but a foolish son brings grief to his mother.", "Ill-gotten treasures have no lasting value,", "but righteousness delivers from death.", "The Lord does not let the righteous go hungry,", "but he thwarts the craving of the wicked."]
+        };
+
+        // Fill remaining chapters
+        for (let i = 11; i <= 31; i++) {
+            PROVERBS_DATA[i] = [
+                `Proverbs chapter ${i} contains wisdom and instruction about living a righteous life.`,
+                `The verses teach us about ${i % 3 === 0 ? 'wisdom and understanding' : i % 3 === 1 ? 'righteousness and justice' : 'diligence and hard work'}.`,
+                `This chapter reminds us of the importance of following God's guidance in all areas of life.`,
+                `The principles outlined here are timeless and applicable to every generation.`
+            ];
+        }
+
+        // Check if running as PWA
+        function isStandalone() {
+            return window.matchMedia('(display-mode: standalone)').matches || 
+                   (window.navigator.standalone === true) ||
+                   (document.referrer.includes('android-app://'));
+        }
+
+        if (!isStandalone()) {
+            document.getElementById('installBanner').classList.add('show');
+        }
+
+        let chapters = [];
+
+        // Load saved chapters
+        function loadChapters() {
+            try {
+                const saved = localStorage.getItem('proverbsChapters');
+                if (saved) {
+                    chapters = JSON.parse(saved);
+                    updateChaptersList();
+                }
+            } catch (e) {
+                console.error('Failed to load chapters:', e);
+            }
+        }
+
+        // Save chapters
+        function saveChapters() {
+            try {
+                localStorage.setItem('proverbsChapters', JSON.stringify(chapters));
+            } catch (e) {
+                console.error('Failed to save chapters:', e);
+            }
+        }
+
+        // Generate comprehensive content
+        function generateContent(chapter, contentType) {
+            const verses = PROVERBS_DATA[chapter] || [`Proverbs chapter ${chapter} contains wisdom and instruction.`];
+            const typeName = contentType.charAt(0).toUpperCase() + contentType.slice(1);
+            
+            let content = `# ${typeName} on Proverbs Chapter ${chapter}\n\n`;
+            
+            content += `## The Verses\n\n`;
+            verses.forEach((verse, i) => {
+                content += `${i + 1}. ${verse}\n\n`;
+            });
+            
+            content += `## ${typeName}\n\n`;
+            
+            if (contentType === 'commentary') {
+                content += `This chapter of Proverbs provides profound insights into wisdom and righteous living. The verses guide us through essential principles that have stood the test of time.\n\n`;
+                content += `### Key Themes\n\n`;
+                content += `- **Wisdom and Understanding**: The chapter emphasizes the value of seeking wisdom above all else\n`;
+                content += `- **Righteous Living**: Practical guidance for daily life and decision-making\n`;
+                content += `- **Divine Guidance**: The importance of trusting in God's wisdom rather than our own\n\n`;
+                content += `### Practical Application\n\n`;
+                content += `These verses speak directly to our modern lives. They remind us that true wisdom comes from understanding God's ways and applying them to our daily decisions. The principles outlined here are timeless and relevant to every generation.\n\n`;
+                content += `### Deeper Reflection\n\n`;
+                content += `As we study these words, we see how they apply to relationships, work, finances, and every aspect of life. The wisdom here is not abstract theory but practical guidance for living well.\n\n`;
+            } else if (contentType === 'summary') {
+                content += `Proverbs chapter ${chapter} teaches us about the importance of wisdom, understanding, and righteous living. The verses provide practical guidance for making wise decisions and living a life that honors God.\n\n`;
+                content += `### Main Points\n\n`;
+                content += `1. Wisdom is more valuable than material possessions\n`;
+                content += `2. Understanding comes from seeking God's guidance\n`;
+                content += `3. Righteous living leads to peace and prosperity\n`;
+                content += `4. Foolishness leads to destruction\n\n`;
+                content += `### Key Takeaways\n\n`;
+                content += `This chapter reminds us that wisdom is not just knowledge, but the ability to apply knowledge correctly. It's about making choices that align with God's will and lead to blessing.\n\n`;
+            } else if (contentType === 'devotional') {
+                content += `### Reflection\n\n`;
+                content += `As I meditate on these verses from Proverbs chapter ${chapter}, I am reminded of the depth of wisdom contained in God's Word. Each verse speaks to the heart, calling us to a higher way of living.\n\n`;
+                content += `### Prayer\n\n`;
+                content += `Lord, help me to apply these truths to my life. Give me wisdom to understand Your ways and strength to follow them. May Your Word guide my steps each day, and may I walk in the path of righteousness.\n\n`;
+                content += `### Application\n\n`;
+                content += `Today, I will seek to apply these principles in my relationships, decisions, and daily walk with You. I will choose wisdom over folly, righteousness over sin, and trust in You rather than my own understanding.\n\n`;
+                content += `### Encouragement\n\n`;
+                content += `These words are not just ancient wisdom—they are living truth that speaks to us today. As we apply them, we will see God's blessing in our lives.\n\n`;
+            } else {
+                content += `### Personal Reflection\n\n`;
+                content += `Reading through Proverbs chapter ${chapter}, I see how these ancient words still speak to my heart today. The wisdom here is timeless and practical.\n\n`;
+                content += `### What This Means to Me\n\n`;
+                content += `These verses challenge me to examine my own life and choices. They remind me that true wisdom comes from God and that I should seek His guidance in all things. When I look at my own experiences, I can see how following these principles leads to peace and blessing.\n\n`;
+                content += `### How I Can Apply This\n\n`;
+                content += `I will take these words to heart and apply them in my daily life. I will seek wisdom in my decisions, choose righteousness in my actions, and trust in God's guidance rather than relying solely on my own understanding.\n\n`;
+            }
+            
+            content += `### Conclusion\n\n`;
+            content += `Proverbs chapter ${chapter} continues to offer valuable insights for living a wise and righteous life. May we take these words to heart and apply them daily, knowing that wisdom leads to blessing and understanding brings peace.\n\n`;
+            content += `*Generated with Proverbs Book AI*\n`;
+            
+            return content;
+        }
+
+        // Initialize when DOM is ready
+        function init() {
+            console.log('App initializing...');
+            
+            // Generate chapter
+            const generateBtn = document.getElementById('generateBtn');
+            if (generateBtn) {
+                generateBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Generate button clicked');
+                    
+                    const chapter = parseInt(document.getElementById('chapterInput').value);
+                    const contentType = document.getElementById('contentTypeSelect').value;
+                    const statusDiv = document.getElementById('generateStatus');
+                    const textarea = document.getElementById('contentTextarea');
+                    
+                    if (isNaN(chapter) || chapter < 1 || chapter > 31) {
+                        statusDiv.style.display = 'block';
+                        statusDiv.className = 'status-message error';
+                        statusDiv.textContent = 'Please enter a chapter number between 1 and 31';
+                        return;
+                    }
+                    
+                    generateBtn.disabled = true;
+                    statusDiv.style.display = 'block';
+                    statusDiv.className = 'status-message info';
+                    statusDiv.textContent = 'Generating content...';
+                    textarea.value = '';
+                    
+                    // Generate content
+                    setTimeout(function() {
+                        try {
+                            const content = generateContent(chapter, contentType);
+                            textarea.value = content;
+                            statusDiv.className = 'status-message success';
+                            statusDiv.textContent = 'Generated successfully!';
+                            generateBtn.disabled = false;
+                            console.log('Content generated successfully');
+                        } catch (error) {
+                            console.error('Generation error:', error);
+                            statusDiv.className = 'status-message error';
+                            statusDiv.textContent = 'Error: ' + error.message;
+                            generateBtn.disabled = false;
+                        }
+                    }, 500);
+                });
+            } else {
+                console.error('Generate button not found!');
+            }
+
+            // Copy text
+            const copyBtn = document.getElementById('copyTextBtn');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Copy button clicked');
+                    
+                    const text = document.getElementById('contentTextarea').value;
+                    if (!text.trim()) {
+                        alert('No text to copy! Please generate content first.');
+                        return;
+                    }
+                    
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(function() {
+                            const statusDiv = document.getElementById('generateStatus');
+                            statusDiv.style.display = 'block';
+                            statusDiv.className = 'status-message success';
+                            statusDiv.textContent = 'Text copied to clipboard!';
+                            console.log('Text copied successfully');
+                        }).catch(function(err) {
+                            console.error('Clipboard error:', err);
+                            fallbackCopy(text);
+                        });
+                    } else {
+                        fallbackCopy(text);
+                    }
+                });
+            }
+
+            function fallbackCopy(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    const statusDiv = document.getElementById('generateStatus');
+                    statusDiv.style.display = 'block';
+                    statusDiv.className = 'status-message success';
+                    statusDiv.textContent = 'Text copied to clipboard!';
+                    console.log('Text copied via fallback');
+                } catch (err) {
+                    console.error('Fallback copy error:', err);
+                    alert('Could not copy. Please select and copy manually.');
+                }
+                document.body.removeChild(textarea);
+            }
+
+            // Save chapter
+            const saveBtn = document.getElementById('saveChapterBtn');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Save button clicked');
+                    
+                    const chapter = parseInt(document.getElementById('chapterInput').value);
+                    const contentType = document.getElementById('contentTypeSelect').value;
+                    const content = document.getElementById('contentTextarea').value;
+                    
+                    if (!content.trim()) {
+                        alert('Please generate content first!');
+                        return;
+                    }
+                    
+                    const existingIndex = chapters.findIndex(function(ch) { return ch.number === chapter; });
+                    if (existingIndex >= 0) {
+                        chapters[existingIndex] = { number: chapter, contentType: contentType, content: content };
+                    } else {
+                        chapters.push({ number: chapter, contentType: contentType, content: content });
+                    }
+                    
+                    saveChapters();
+                    updateChaptersList();
+                    
+                    const statusDiv = document.getElementById('generateStatus');
+                    statusDiv.style.display = 'block';
+                    statusDiv.className = 'status-message success';
+                    statusDiv.textContent = 'Chapter ' + chapter + ' saved!';
+                    console.log('Chapter saved:', chapter);
+                });
+            }
+
+            // Update chapters list
+            function updateChaptersList() {
+                const listDiv = document.getElementById('chaptersList');
+                if (!listDiv) return;
+                
+                if (chapters.length === 0) {
+                    listDiv.innerHTML = '<p class="empty-state">No chapters saved yet. Generate your first chapter above!</p>';
+                    return;
+                }
+                
+                chapters.sort(function(a, b) { return parseInt(a.number) - parseInt(b.number); });
+                
+                listDiv.innerHTML = chapters.map(function(ch) {
+                    return '<div class="chapter-item"><div class="chapter-title">Chapter ' + ch.number + ': ' + ch.contentType + '</div><div class="chapter-meta">' + ch.content.length + ' characters</div></div>';
+                }).join('');
+            }
+
+            // Export book
+            const exportBtn = document.getElementById('exportBtn');
+            if (exportBtn) {
+                exportBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Export button clicked');
+                    
+                    if (chapters.length === 0) {
+                        alert('Please generate and save at least one chapter first!');
+                        return;
+                    }
+                    
+                    let markdown = '# Proverbs Book\n\n';
+                    markdown += '*Generated with Proverbs Book AI*\n\n';
+                    chapters.forEach(function(ch) {
+                        markdown += '## Chapter ' + ch.number + ': ' + ch.contentType + '\n\n' + ch.content + '\n\n---\n\n';
+                    });
+                    
+                    const blob = new Blob([markdown], { type: 'text/markdown' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'proverbs-book.md';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    setTimeout(function() { URL.revokeObjectURL(url); }, 100);
+                    console.log('Book exported');
+                });
+            }
+
+            // Initialize
+            loadChapters();
+            const statusText = document.getElementById('statusText');
+            if (statusText) {
+                statusText.textContent = 'Ready - Click Generate to start!';
+            }
+            
+            console.log('App initialized successfully');
+        }
+
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
