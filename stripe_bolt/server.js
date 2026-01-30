@@ -33,6 +33,21 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
     case 'payment_intent.payment_failed':
       console.log('Payment failed:', event.data.object.id);
       break;
+    case 'customer.subscription.created':
+      console.log('Subscription created:', event.data.object.id);
+      break;
+    case 'customer.subscription.updated':
+      console.log('Subscription updated:', event.data.object.id);
+      break;
+    case 'invoice.payment_succeeded':
+      console.log('Invoice payment succeeded:', event.data.object.id);
+      break;
+    case 'invoice.payment_failed':
+      console.log('Invoice payment failed:', event.data.object.id);
+      break;
+    case 'charge.refunded':
+      console.log('Charge refunded:', event.data.object.id);
+      break;
     default:
       break;
   }
