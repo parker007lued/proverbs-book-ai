@@ -9,18 +9,17 @@
     "checkoutUrl": "",
     "demoUrl": "",
     "repoUrl": "https://github.com/parker007lued/proverbs-book-ai",
-    "status": "active"
-  },
-  {
-    "id": 2,
-    "title": "WilhelmTechCo MCP",
-    "description": "Master Control Panel for managing, selling, and scaling all solutions.",
-    "category": "Operations",
-    "price": "0",
-    "billing": "one-time",
-    "checkoutUrl": "",
-    "demoUrl": "website/mcp.html",
-    "repoUrl": "",
-    "status": "active"
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "book_title", "label": "Book Title", "placeholder": "e.g., Wisdom for Today" },
+      { "id": "target_audience", "label": "Target Audience", "placeholder": "e.g., young adults, families, clergy" },
+      { "id": "tone_style", "label": "Tone / Style", "placeholder": "e.g., devotional, academic, pastoral" },
+      { "id": "chapter_focus", "label": "Focus Chapters", "placeholder": "e.g., all chapters or list specific ones" },
+      { "id": "word_count", "label": "Target Word Count", "placeholder": "e.g., 30,000" },
+      { "id": "graphics_style", "label": "Graphics Style", "placeholder": "e.g., symbolic, illustrated, decorative" },
+      { "id": "delivery_deadline", "label": "Desired Delivery Date", "placeholder": "e.g., 2026-06-01" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special instructions" }
+    ]
   }
 ]

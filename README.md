@@ -63,11 +63,10 @@ cd desktop_app
 npm start
 ```
 
-## 🧭 MCP Solutions Hub
+## 🧭 Product Intake Form
 
-Use the Master Control Panel to manage and sell your solutions:
-- `website/mcp.html`
-- See `MCP-OVERVIEW.md`
+Use the intake form to collect personalization details for Proverbs Book AI:
+- `website/intake.html`
 
 ## 📁 Repository Structure
 

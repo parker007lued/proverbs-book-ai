@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WilhelmTechCo — Product Intake</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b12; color: #f5f5ff; }
+    header { padding: 24px; text-align: center; background: linear-gradient(135deg, #6a5acd, #6b46c1); }
+    header h1 { font-size: 26px; margin-bottom: 8px; }
+    header p { opacity: 0.9; }
+    .container { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+    .panel { background: #101018; border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; margin-bottom: 16px; }
+    label { display: block; margin-top: 12px; font-size: 14px; opacity: 0.9; }
+    input, select, textarea { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #2c2c3a; background: #151522; color: #fff; margin-top: 6px; }
+    textarea { min-height: 90px; }
+    .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .btn { background: #6a5acd; color: #fff; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+    .btn.secondary { background: #4a90e2; }
+    .muted { opacity: 0.7; font-size: 12px; margin-top: 6px; }
+    .success { color: #7CFC98; margin-top: 8px; }
+    .error { color: #ff7b7b; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WilhelmTechCo — Product Intake</h1>
+    <p>Required setup form for Proverbs Book AI</p>
+  </header>
+
+  <div class="container">
+    <div class="panel">
+      <label>Product</label>
+      <select id="productSelect"></select>
+      <div class="muted">Products loaded from <code>mcp.json</code></div>
+    </div>
+
+    <div class="panel">
+      <h3>Account Setup (Required)</h3>
+      <div class="row">
+        <div>
+          <label>Username *</label>
+          <input id="username" required />
+        </div>
+        <div>
+          <label>Password *</label>
+          <input id="password" type="password" required />
+        </div>
+        <div>
+          <label>Confirm Password *</label>
+          <input id="confirmPassword" type="password" required />
+        </div>
+      </div>
+
+      <label>Email *</label>
+      <input id="email" type="email" required />
+
+      <label>Phone (optional)</label>
+      <input id="phone" type="tel" />
+
+      <label>Verification Method *</label>
+      <select id="verificationMethod">
+        <option value="email">Email (easiest)</option>
+        <option value="sms">SMS</option>
+      </select>
+
+      <div class="row">
+        <div>
+          <label>Verification Code *</label>
+          <input id="verificationCode" />
+        </div>
+        <div style="display:flex; align-items:flex-end;">
+          <button class="btn secondary" type="button" onclick="sendVerification()">Send Code</button>
+        </div>
+      </div>
+      <div id="verificationStatus" class="muted"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Personalization Sheet</h3>
+      <div id="questionFields"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Contact Info</h3>
+      <label>Full Name *</label>
+      <input id="fullName" required />
+      <label>Best Contact Time</label>
+      <input id="contactTime" placeholder="e.g., Weekdays after 5pm" />
+      <label>Preferred Contact Method</label>
+      <select id="contactMethod">
+        <option value="email">Email</option>
+        <option value="phone">Phone</option>
+      </select>
+    </div>
+
+    <div class="panel">
+      <button class="btn" onclick="submitIntake()">Submit Intake</button>
+      <button class="btn secondary" onclick="downloadIntake()">Download JSON</button>
+      <div id="formStatus"></div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = ''; // Optional: set to your backend if you add verification endpoints
+    let products = [];
+    let currentProduct = null;
+    let devCode = null;
+
+    async function loadProducts() {
+      try {
+        const res = await fetch('mcp.json', { cache: 'no-store' });
+        products = await res.json();
+      } catch {
+        products = [];
+      }
+      const select = document.getElementById('productSelect');
+      select.innerHTML = products.map(p => `<option value="${p.id}">${p.title}</option>`).join('');
+      select.addEventListener('change', () => setProduct(select.value));
+      if (products.length) setProduct(products[0].id);
+    }
+
+    function setProduct(id) {
+      currentProduct = products.find(p => String(p.id) === String(id));
+      renderQuestions();
+    }
+
+    function renderQuestions() {
+      const container = document.getElementById('questionFields');
+      if (!currentProduct || !currentProduct.intakeQuestions) {
+        container.innerHTML = '<p class="muted">No custom questions for this product.</p>';
+        return;
+      }
+      container.innerHTML = currentProduct.intakeQuestions.map(q => `
+        <label>${q.label} *</label>
+        <input data-qid="${q.id}" placeholder="${q.placeholder || ''}" required />
+      `).join('');
+    }
+
+    async function sendVerification() {
+      const method = document.getElementById('verificationMethod').value;
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      if (method === 'email' && !email) return alert('Email is required');
+      if (method === 'sms' && !phone) return alert('Phone is required for SMS');
+
+      const status = document.getElementById('verificationStatus');
+      status.textContent = 'Sending code...';
+
+      // Optional backend verification (if you wire it)
+      if (API_URL) {
+        try {
+          const res = await fetch(`${API_URL}/api/verify/start`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ method, email, phone })
+          });
+          const data = await res.json();
+          if (data.success) {
+            status.textContent = 'Code sent. Check your inbox or phone.';
+            return;
+          }
+        } catch {}
+      }
+
+      // Local fallback for now (dev)
+      devCode = String(Math.floor(100000 + Math.random() * 900000));
+      status.textContent = `Verification code (dev): ${devCode}`;
+    }
+
+    function submitIntake() {
+      const status = document.getElementById('formStatus');
+      status.textContent = '';
+
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirmPassword').value;
+      if (password.length < 8) {
+        status.innerHTML = '<div class="error">Password must be at least 8 characters.</div>';
+        return;
+      }
+      if (password !== confirm) {
+        status.innerHTML = '<div class="error">Passwords do not match.</div>';
+        return;
+      }
+
+      const code = document.getElementById('verificationCode').value.trim();
+      if (!code) {
+        status.innerHTML = '<div class="error">Verification code required.</div>';
+        return;
+      }
+      if (devCode && code !== devCode) {
+        status.innerHTML = '<div class="error">Verification code invalid.</div>';
+        return;
+      }
+
+      status.innerHTML = '<div class="success">Intake complete. Use Download JSON to save.</div>';
+    }
+
+    function buildPayload() {
+      const answers = {};
+      document.querySelectorAll('[data-qid]').forEach(input => {
+        answers[input.dataset.qid] = input.value.trim();
+      });
+      return {
+        product: currentProduct,
+        account: {
+          username: document.getElementById('username').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          phone: document.getElementById('phone').value.trim(),
+          verificationMethod: document.getElementById('verificationMethod').value
+        },
+        contact: {
+          fullName: document.getElementById('fullName').value.trim(),
+          contactTime: document.getElementById('contactTime').value.trim(),
+          preferredMethod: document.getElementById('contactMethod').value
+        },
+        personalization: answers
+      };
+    }
+
+    function downloadIntake() {
+      const payload = buildPayload();
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `intake-${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>
