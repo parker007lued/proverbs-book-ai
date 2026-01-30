@@ -14,6 +14,7 @@
     "intakeQuestions": [
       { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
       { "id": "primary_goal", "label": "Primary Goal", "placeholder": "e.g., automate scheduling, reduce admin work" },
+      { "id": "departments", "label": "Departments Using It", "placeholder": "e.g., sales, support, ops" },
       { "id": "current_tools", "label": "Current Tools", "placeholder": "e.g., Gmail, Slack, HubSpot" },
       { "id": "automation_scope", "label": "Automation Scope", "placeholder": "e.g., email, CRM, reporting" },
       { "id": "users_count", "label": "Number of Users", "placeholder": "e.g., 5" },
@@ -38,6 +39,7 @@
       { "id": "workflows", "label": "Key Workflows", "placeholder": "e.g., onboarding, invoicing, fulfillment" },
       { "id": "integrations", "label": "Required Integrations", "placeholder": "e.g., Shopify, QuickBooks, Zapier" },
       { "id": "data_sources", "label": "Data Sources", "placeholder": "e.g., CSV, CRM, database" },
+      { "id": "volume", "label": "Process Volume", "placeholder": "e.g., 1,000 tasks/week" },
       { "id": "sla", "label": "SLA Needs", "placeholder": "e.g., 99.9% uptime" },
       { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 4 weeks" },
       { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
@@ -63,6 +65,247 @@
       { "id": "compliance", "label": "Compliance Requirements", "placeholder": "e.g., HIPAA, SOC2" },
       { "id": "stakeholders", "label": "Key Stakeholders", "placeholder": "Names or roles" },
       { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 8–12 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 104,
+    "title": "Custom AI Development",
+    "description": "Fully customized AI solution tailored to your needs with end-to-end delivery.",
+    "category": "Custom / AI",
+    "price": "9999",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "problem_statement", "label": "Problem Statement", "placeholder": "Describe the problem to solve" },
+      { "id": "model_type", "label": "Desired Model Type", "placeholder": "e.g., NLP, vision, forecasting" },
+      { "id": "data_availability", "label": "Data Availability", "placeholder": "e.g., yes/no, data size" },
+      { "id": "budget_range", "label": "Budget Range", "placeholder": "e.g., 10k–50k" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 6–12 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 105,
+    "title": "Wilhelm Enterprise AI Assistant (OpenAI GPT-4)",
+    "description": "Enterprise-grade AI assistant with advanced language processing and insights.",
+    "category": "AI Platform",
+    "price": "299",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "use_case", "label": "Use Case", "placeholder": "e.g., support, analysis, reporting" },
+      { "id": "data_constraints", "label": "Data Constraints", "placeholder": "e.g., PII, internal-only" },
+      { "id": "integrations", "label": "Required Integrations", "placeholder": "e.g., Slack, Jira, CRM" },
+      { "id": "seats", "label": "Number of Seats", "placeholder": "e.g., 20" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 2–4 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 106,
+    "title": "Wilhelm Creative AI Suite (Midjourney)",
+    "description": "AI image generation for marketing, design, and content teams.",
+    "category": "Creative AI",
+    "price": "199",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "creative_use_case", "label": "Creative Use Case", "placeholder": "e.g., ads, branding, social media" },
+      { "id": "brand_style", "label": "Brand Style Guide", "placeholder": "e.g., link or summary" },
+      { "id": "asset_volume", "label": "Assets / Month", "placeholder": "e.g., 50 images" },
+      { "id": "team_size", "label": "Team Size", "placeholder": "e.g., 3" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 2 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 107,
+    "title": "Wilhelm Developer AI Platform (GitHub Copilot)",
+    "description": "AI development acceleration with GitHub Copilot Enterprise and automation.",
+    "category": "Development",
+    "price": "399",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "team_size", "label": "Team Size", "placeholder": "e.g., 10" },
+      { "id": "stack", "label": "Languages/Stack", "placeholder": "e.g., Node, Python, React" },
+      { "id": "repo_host", "label": "Repo Hosting", "placeholder": "e.g., GitHub, GitLab" },
+      { "id": "security", "label": "Security/Compliance Needs", "placeholder": "e.g., SOC2, HIPAA" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 2–4 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 108,
+    "title": "Wilhelm Rapid Development Platform (Replit)",
+    "description": "Rapid application development with collaboration and deployment automation.",
+    "category": "Development",
+    "price": "249",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "use_case", "label": "Use Case", "placeholder": "e.g., prototypes, internal tools" },
+      { "id": "collaboration", "label": "Collaboration Needs", "placeholder": "e.g., team size, roles" },
+      { "id": "deployment", "label": "Deployment Targets", "placeholder": "e.g., Vercel, AWS" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 1–2 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 109,
+    "title": "Wilhelm Enterprise Language AI (Cohere)",
+    "description": "Enterprise language AI with NLP automation workflows.",
+    "category": "Enterprise ML",
+    "price": "599",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "nlp_tasks", "label": "NLP Tasks", "placeholder": "e.g., classification, summarization" },
+      { "id": "data_size", "label": "Dataset Size", "placeholder": "e.g., 1M docs" },
+      { "id": "integrations", "label": "Integration Targets", "placeholder": "e.g., CRM, data lake" },
+      { "id": "compliance", "label": "Compliance Requirements", "placeholder": "e.g., SOC2, GDPR" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 4–6 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 110,
+    "title": "Wilhelm Enterprise ML Platform (DataRobot)",
+    "description": "Enterprise ML platform with automated model building and monitoring.",
+    "category": "Enterprise ML",
+    "price": "4999",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "ml_use_cases", "label": "ML Use Cases", "placeholder": "e.g., churn, forecasting" },
+      { "id": "data_sources", "label": "Data Sources", "placeholder": "e.g., warehouse, CRM" },
+      { "id": "deployment", "label": "Deployment Preference", "placeholder": "e.g., cloud, on-prem" },
+      { "id": "monitoring", "label": "Monitoring Needs", "placeholder": "e.g., drift detection" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 6–10 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 111,
+    "title": "Wilhelm Data Labeling Solution (Scale AI)",
+    "description": "Professional data labeling and annotation with workflow automation.",
+    "category": "Data Solutions",
+    "price": "1999",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "data_types", "label": "Data Types", "placeholder": "e.g., image, text, video" },
+      { "id": "volume", "label": "Data Volume", "placeholder": "e.g., 100k items" },
+      { "id": "taxonomy", "label": "Labeling Taxonomy", "placeholder": "e.g., 12 classes" },
+      { "id": "qa", "label": "QA Requirements", "placeholder": "e.g., 2-pass review" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 4–8 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 112,
+    "title": "Wilhelm Distributed AI Infrastructure (Anyscale)",
+    "description": "Distributed AI infrastructure and orchestration for large workloads.",
+    "category": "Infrastructure",
+    "price": "2999",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "workloads", "label": "Workload Types", "placeholder": "e.g., training, inference" },
+      { "id": "cluster_size", "label": "Cluster Size Needs", "placeholder": "e.g., 50 nodes" },
+      { "id": "cloud", "label": "Cloud Provider", "placeholder": "e.g., AWS, GCP" },
+      { "id": "sla", "label": "SLA Requirements", "placeholder": "e.g., 99.9% uptime" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 6–10 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 113,
+    "title": "Wilhelm Vector Search Solution (Pinecone)",
+    "description": "High-performance vector search for semantic retrieval and recommendations.",
+    "category": "Database",
+    "price": "999",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "search_use_case", "label": "Search Use Case", "placeholder": "e.g., RAG, recommendations" },
+      { "id": "dataset_size", "label": "Dataset Size", "placeholder": "e.g., 10M vectors" },
+      { "id": "embedding_model", "label": "Embedding Model", "placeholder": "e.g., OpenAI, Cohere" },
+      { "id": "latency", "label": "Latency Requirements", "placeholder": "e.g., <100ms" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 2–4 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 114,
+    "title": "Wilhelm Content AI Platform (Jasper)",
+    "description": "AI-powered content creation at scale with workflow automation.",
+    "category": "Content AI",
+    "price": "499",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "content_types", "label": "Content Types", "placeholder": "e.g., blogs, ads, emails" },
+      { "id": "monthly_volume", "label": "Monthly Volume", "placeholder": "e.g., 100 assets" },
+      { "id": "brand_voice", "label": "Brand Voice", "placeholder": "e.g., formal, playful" },
+      { "id": "workflow", "label": "Approval Workflow", "placeholder": "e.g., 2-step approval" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 2–4 weeks" },
       { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
     ]
   }
