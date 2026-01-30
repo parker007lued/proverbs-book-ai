@@ -9,8 +9,8 @@
 
 ### Secret Key (Backend)
 - **Location**: `backend-api/.env` (create this file)
-- **Key**: `mk_1QvQa2C18TJUjM0RG0t7XW2x`
-- ⚠️ **Note**: Verify this is correct - Stripe secret keys typically start with `sk_live_` or `sk_test_`
+- **Key**: `sk_live_...` (or `sk_test_...` for testing)
+- ⚠️ **Note**: Never commit secret keys to GitHub
 
 ## 📝 Setup Steps
 
@@ -24,7 +24,7 @@ cp env.template .env
 
 Or create `backend-api/.env` manually with:
 ```env
-STRIPE_SECRET_KEY=mk_1QvQa2C18TJUjM0RG0t7XW2x
+STRIPE_SECRET_KEY=sk_live_YOUR_SECRET_KEY_HERE
 ```
 
 ### 2. Set Up Webhook
@@ -60,6 +60,14 @@ For testing, use Stripe test mode:
 - Test publishable key: `pk_test_...`
 - Test secret key: `sk_test_...`
 - Test card: `4242 4242 4242 4242`
+
+### 5. Verify Keys Programmatically
+
+Run the Stripe verification script (requires `STRIPE_SECRET_KEY` in `.env`):
+```bash
+cd backend-api
+npm run verify-stripe
+```
 
 ## ⚠️ Important Notes
 
