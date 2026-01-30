@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Proverbs Book AI",
+    "description": "AI-powered book writing and Orthodox-aligned study tool for Proverbs.",
+    "category": "AI / Publishing",
+    "price": "0",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "https://github.com/parker007lued/proverbs-book-ai",
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "title": "WilhelmTechCo MCP",
+    "description": "Master Control Panel for managing, selling, and scaling all solutions.",
+    "category": "Operations",
+    "price": "0",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "website/mcp.html",
+    "repoUrl": "",
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "title": "Financial Advisor AI (Private)",
+    "description": "Private financial advisor + tax tool. Owner-only access.",
+    "category": "Finance",
+    "price": "",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "draft"
+  }
+]
