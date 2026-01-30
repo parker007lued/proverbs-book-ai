@@ -27,17 +27,6 @@ git commit -m "Initial commit - Proverbs Book AI with donations and credits"
 git remote add origin https://github.com/parker007lued/proverbs-book-ai.git
 ```
 
-**Financial Advisor (separate repo):**
-```bash
-cd financial-advisor
-git init
-git add .
-git commit -m "Initial commit - Private financial advisor"
-git remote add origin https://github.com/parker007lued/financial-advisor-ai.git
-git push -u origin main
-cd ..
-```
-
 ### Step 5: Push Main Repository
 
 ```bash
@@ -60,15 +49,13 @@ git push -u origin main
 
 ## 🔐 GitHub Setup
 
-1. **Create repositories** on GitHub:
+1. **Create repository** on GitHub:
    - `proverbs-book-ai` (Public)
-   - `financial-advisor-ai` (Private)
 
 2. **Push code** using commands above
 
 3. **Configure access**:
    - Main repo: Public with approval required
-   - Financial repo: Private, owner only
 
 ---
 

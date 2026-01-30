@@ -19,7 +19,7 @@ setup-databases.bat
 The script will:
 - Check if PostgreSQL is installed
 - Prompt for your PostgreSQL password
-- Create both databases automatically
+- Create the Proverbs database automatically
 
 ---
 
@@ -44,7 +44,6 @@ When prompted:
 
 ```sql
 CREATE DATABASE proverbs_book;
-CREATE DATABASE financial_advisor;
 ```
 
 **Step 4: Verify**
@@ -53,7 +52,7 @@ CREATE DATABASE financial_advisor;
 \l
 ```
 
-You should see both databases listed.
+You should see the database listed.
 
 **Step 5: Exit**
 
@@ -69,7 +68,6 @@ You should see both databases listed.
 2. Connect to PostgreSQL server
 3. Right-click **Databases** → **Create** → **Database**
 4. Name: `proverbs_book` → **Save**
-5. Repeat for `financial_advisor`
 
 ---
 
@@ -121,32 +119,22 @@ psql -U postgres -l
 
 You should see:
 - `proverbs_book`
-- `financial_advisor`
 
 ---
 
 ## 📝 Next Steps
 
 1. ✅ Databases created
-2. Configure `.env` files:
+2. Configure `.env` file:
    - `backend-api/.env`
-   - `financial-advisor/.env`
 3. Install dependencies:
    ```bash
    cd backend-api
    npm install
-   
-   cd ../financial-advisor
-   npm install
    ```
-4. Start servers:
+4. Start server:
    ```bash
-   # Terminal 1
    cd backend-api
-   npm start
-   
-   # Terminal 2
-   cd financial-advisor
    npm start
    ```
 
@@ -158,7 +146,6 @@ You should see:
 ```bash
 psql -U postgres
 CREATE DATABASE proverbs_book;
-CREATE DATABASE financial_advisor;
 \q
 ```
 

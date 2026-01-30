@@ -48,17 +48,6 @@ if ($LASTEXITCODE -eq 0 -or $result1 -match "already exists") {
     Write-Host "⚠ Error creating proverbs_book: $result1" -ForegroundColor Yellow
 }
 
-# Create financial_advisor database
-Write-Host "Creating financial_advisor database..." -ForegroundColor Yellow
-$createFinancial = "CREATE DATABASE financial_advisor;"
-$result2 = echo $createFinancial | psql -U postgres -h localhost 2>&1
-
-if ($LASTEXITCODE -eq 0 -or $result2 -match "already exists") {
-    Write-Host "✓ financial_advisor database ready" -ForegroundColor Green
-} else {
-    Write-Host "⚠ Error creating financial_advisor: $result2" -ForegroundColor Yellow
-}
-
 # Clear password
 $env:PGPASSWORD = ""
 
@@ -68,8 +57,7 @@ Write-Host "  DATABASE SETUP COMPLETE!" -ForegroundColor Green
 Write-Host "═══════════════════════════════════════════════════════════════" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
-Write-Host "  1. Configure .env files in backend-api/ and financial-advisor/" -ForegroundColor White
+Write-Host "  1. Configure .env in backend-api/" -ForegroundColor White
 Write-Host "  2. Run: cd backend-api && npm install && npm start" -ForegroundColor White
-Write-Host "  3. Run: cd financial-advisor && npm install && npm start" -ForegroundColor White
 Write-Host ""
 pause

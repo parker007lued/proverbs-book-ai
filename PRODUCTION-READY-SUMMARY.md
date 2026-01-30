@@ -14,14 +14,7 @@
 - ✅ Security (bcrypt, rate limiting, CORS, Helmet)
 - ✅ Docker deployment ready
 
-### 2. **Financial Advisor AI** (`financial-advisor/`)
-- ✅ Receipt OCR scanning
-- ✅ Tax deduction optimization
-- ✅ Automatic tax filing
-- ✅ AI financial advice
-- ✅ **Beats $1800 accountant!**
-
-### 3. **Desktop App** (`desktop_app/`)
+### 2. **Desktop App** (`desktop_app/`)
 - ✅ Electron-based (real app, not scripts)
 - ✅ Privacy policy enforcement
 - ✅ Login/registration
@@ -30,14 +23,14 @@
 - ✅ **Bible summary feature**
 - ✅ Cross-platform installers (Windows, Mac, Linux)
 
-### 4. **Admin Panel** (`admin-panel/`)
+### 3. **Admin Panel** (`admin-panel/`)
 - ✅ User management
 - ✅ Subscription management
 - ✅ Grant free access (e.g., for Sarah)
 - ✅ Discount management
 - ✅ Analytics dashboard
 
-### 5. **Website** (`website/`)
+### 4. **Website** (`website/`)
 - ✅ Download page with privacy check
 - ✅ Cross-platform download links
 - ✅ Auto-version detection

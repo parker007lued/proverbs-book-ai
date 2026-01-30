@@ -149,16 +149,10 @@ Contributions are welcome! Please:
 2. Create a feature branch
 3. Submit a pull request for review
 
-## 🔗 Related Repositories
-
-- **Financial Advisor AI**: Private repository (personal use only)
-
 ## 📞 Support
 
 For issues, questions, or access requests, please contact [@parker007lued](https://github.com/parker007lued).
 
 ---
-
-**Note**: This repository contains the Proverbs Book AI application. The Financial Advisor AI tool is maintained in a separate private repository.
 
 **Built for God's glory. Free for everyone.**

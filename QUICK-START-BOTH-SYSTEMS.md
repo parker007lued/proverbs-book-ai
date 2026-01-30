@@ -1,4 +1,4 @@
-# Quick Start Guide - Both Systems
+# Quick Start Guide - Proverbs Book AI
 
 ## 🎯 What You Have
 
@@ -6,13 +6,6 @@
    - Custom Node.js/Express API
    - PostgreSQL database
    - Authentication & data sync
-
-2. **Financial Advisor AI** (`financial-advisor/`)
-   - Receipt OCR scanning
-   - Tax deduction optimization
-   - Automatic tax filing
-   - AI financial advice
-   - **Beats $1800 accountant!**
 
 ---
 
@@ -44,9 +37,6 @@ psql -U postgres
 # Create Proverbs database
 CREATE DATABASE proverbs_book;
 
-# Create Financial database
-CREATE DATABASE financial_advisor;
-
 \q
 ```
 
@@ -62,19 +52,7 @@ npm start
 
 **Test**: http://localhost:3000/health
 
-### Step 4: Set Up Financial Advisor
-
-```bash
-cd financial-advisor
-npm install
-cp .env.example .env
-# Edit .env with database credentials and OpenAI API key
-npm start
-```
-
-**Test**: http://localhost:4000/health
-
-### Step 5: Update Desktop App
+### Step 4: Update Desktop App
 
 Edit `desktop_app/auth.js`:
 ```javascript
@@ -106,10 +84,6 @@ heroku create proverbs-api
 heroku addons:create heroku-postgresql:hobby-dev
 git push heroku main
 
-# Financial Advisor
-heroku create financial-advisor
-heroku addons:create heroku-postgresql:hobby-dev
-git push heroku main
 ```
 
 **Cost**: $7/month per system (or free tier)
@@ -122,39 +96,21 @@ git push heroku main
 - Development: Free (local)
 - Production: $7-12/month
 
-**Financial Advisor:**
-- Development: Free (local)
-- Production: $7-12/month
-- **Saves: $1701-1800/year vs human accountant**
-
-**Total**: ~$14-24/month for both systems
+**Total**: ~$7-12/month for the system
 
 ---
 
 ## ✅ What's Next
 
-1. ✅ Both backends are ready
+1. ✅ Backend is ready
 2. ✅ Deploy to production
 3. ✅ Update desktop app API URLs
-4. ✅ Build frontend for Financial Advisor
-5. ✅ Start using!
-
----
-
-## 🎯 Financial Advisor Features
-
-- **Receipt Scanning**: Upload photo → Auto-extract data
-- **Tax Deductions**: Automatic write-off detection
-- **Tax Filing**: Generate complete tax returns
-- **Financial Advice**: AI-powered recommendations
-- **Cost**: 95% cheaper than $1800 accountant
+4. ✅ Start using!
 
 ---
 
 ## 📝 Notes
 
-- Both systems use PostgreSQL
-- Can run on same server (different ports)
-- Can share same database server (different databases)
-- Financial Advisor needs OpenAI API key for best features
-- Both are production-ready!
+- Uses PostgreSQL
+- Can run on a single server
+- Production-ready

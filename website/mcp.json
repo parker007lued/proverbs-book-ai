@@ -22,17 +22,5 @@
     "demoUrl": "website/mcp.html",
     "repoUrl": "",
     "status": "active"
-  },
-  {
-    "id": 3,
-    "title": "Financial Advisor AI (Private)",
-    "description": "Private financial advisor + tax tool. Owner-only access.",
-    "category": "Finance",
-    "price": "",
-    "billing": "one-time",
-    "checkoutUrl": "",
-    "demoUrl": "",
-    "repoUrl": "",
-    "status": "draft"
   }
 ]

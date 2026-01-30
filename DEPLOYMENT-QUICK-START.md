@@ -10,12 +10,11 @@ cd backend-api
 Or manually:
 ```sql
 CREATE DATABASE proverbs_book;
-CREATE DATABASE financial_advisor;
 ```
 
 ## Step 2: Configure Backend
 
-1. **Create `.env` files:**
+1. **Create `.env` file:**
 
 `backend-api/.env`:
 ```
@@ -29,35 +28,15 @@ PORT=3000
 OPENAI_API_KEY=your_openai_key_optional
 ```
 
-`financial-advisor/.env`:
-```
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=financial_advisor
-DB_USER=postgres
-DB_PASSWORD=your_password
-JWT_SECRET=your_super_secret_jwt_key_here
-PORT=4000
-OPENAI_API_KEY=your_openai_key
-```
-
 2. **Install dependencies:**
 ```bash
 cd backend-api
 npm install
-
-cd ../financial-advisor
-npm install
 ```
 
-3. **Start servers:**
+3. **Start server:**
 ```bash
-# Terminal 1
 cd backend-api
-npm start
-
-# Terminal 2
-cd financial-advisor
 npm start
 ```
 

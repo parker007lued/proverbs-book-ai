@@ -41,23 +41,13 @@ if %ERRORLEVEL% EQU 0 (
     echo WARNING: proverbs_book may already exist or error occurred
 )
 
-REM Create financial_advisor database
-echo Creating financial_advisor database...
-echo CREATE DATABASE financial_advisor; | psql -U postgres -h localhost
-if %ERRORLEVEL% EQU 0 (
-    echo OK: financial_advisor database created
-) else (
-    echo WARNING: financial_advisor may already exist or error occurred
-)
-
 echo.
 echo ===============================================================
 echo   DATABASE SETUP COMPLETE!
 echo ===============================================================
 echo.
 echo Next steps:
-echo   1. Configure .env files in backend-api/ and financial-advisor/
+echo   1. Configure .env file in backend-api/
 echo   2. Run: cd backend-api && npm install && npm start
-echo   3. Run: cd financial-advisor && npm install && npm start
 echo.
 pause
