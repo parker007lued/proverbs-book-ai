@@ -68,6 +68,8 @@ secrets/
 *.pem
 *.key
 *.cert
+SECRETS.local.txt
+stripe_bolt/SECRETS.local.txt
 
 # Ollama models (too large)
 models/
