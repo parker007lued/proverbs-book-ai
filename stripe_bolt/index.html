@@ -83,7 +83,7 @@
           category: item.category || '',
           price: item.price || '',
           billing: item.billing === 'subscription' ? 'subscription' : 'payment',
-          interval: 'month'
+          interval: item.interval || 'month'
         }));
         localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
       } catch {
