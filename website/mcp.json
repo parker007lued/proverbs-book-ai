@@ -1,25 +1,69 @@
 [
   {
-    "id": 1,
-    "title": "Proverbs Book AI",
-    "description": "AI-powered book writing and Orthodox-aligned study tool for Proverbs.",
-    "category": "AI / Publishing",
-    "price": "0",
+    "id": 101,
+    "title": "Wilhelm AI Assistant",
+    "description": "Personal AI business assistant with automation and multi-agent orchestration.",
+    "category": "AI / Automation",
+    "price": "149",
     "billing": "one-time",
     "checkoutUrl": "",
     "demoUrl": "",
-    "repoUrl": "https://github.com/parker007lued/proverbs-book-ai",
+    "repoUrl": "",
     "status": "active",
     "requiresAccount": true,
     "intakeQuestions": [
-      { "id": "book_title", "label": "Book Title", "placeholder": "e.g., Wisdom for Today" },
-      { "id": "target_audience", "label": "Target Audience", "placeholder": "e.g., young adults, families, clergy" },
-      { "id": "tone_style", "label": "Tone / Style", "placeholder": "e.g., devotional, academic, pastoral" },
-      { "id": "chapter_focus", "label": "Focus Chapters", "placeholder": "e.g., all chapters or list specific ones" },
-      { "id": "word_count", "label": "Target Word Count", "placeholder": "e.g., 30,000" },
-      { "id": "graphics_style", "label": "Graphics Style", "placeholder": "e.g., symbolic, illustrated, decorative" },
-      { "id": "delivery_deadline", "label": "Desired Delivery Date", "placeholder": "e.g., 2026-06-01" },
-      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special instructions" }
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "primary_goal", "label": "Primary Goal", "placeholder": "e.g., automate scheduling, reduce admin work" },
+      { "id": "current_tools", "label": "Current Tools", "placeholder": "e.g., Gmail, Slack, HubSpot" },
+      { "id": "automation_scope", "label": "Automation Scope", "placeholder": "e.g., email, CRM, reporting" },
+      { "id": "users_count", "label": "Number of Users", "placeholder": "e.g., 5" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 2 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 102,
+    "title": "Business Automation Suite",
+    "description": "Workflow automation, integrations, and 24/7 intelligent monitoring.",
+    "category": "AI / Operations",
+    "price": "499",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "workflows", "label": "Key Workflows", "placeholder": "e.g., onboarding, invoicing, fulfillment" },
+      { "id": "integrations", "label": "Required Integrations", "placeholder": "e.g., Shopify, QuickBooks, Zapier" },
+      { "id": "data_sources", "label": "Data Sources", "placeholder": "e.g., CSV, CRM, database" },
+      { "id": "sla", "label": "SLA Needs", "placeholder": "e.g., 99.9% uptime" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 4 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
+    ]
+  },
+  {
+    "id": 103,
+    "title": "Enterprise AI Solution",
+    "description": "Custom enterprise AI with SLA support, model training, and integrations.",
+    "category": "Enterprise / AI",
+    "price": "4999",
+    "billing": "one-time",
+    "checkoutUrl": "",
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "active",
+    "requiresAccount": true,
+    "intakeQuestions": [
+      { "id": "company_name", "label": "Company Name", "placeholder": "Your business name" },
+      { "id": "use_case", "label": "Primary Use Case", "placeholder": "e.g., predictive analytics, support automation" },
+      { "id": "data_volume", "label": "Data Volume", "placeholder": "e.g., 1M records/month" },
+      { "id": "deployment", "label": "Deployment Preference", "placeholder": "e.g., cloud, on-prem" },
+      { "id": "compliance", "label": "Compliance Requirements", "placeholder": "e.g., HIPAA, SOC2" },
+      { "id": "stakeholders", "label": "Key Stakeholders", "placeholder": "Names or roles" },
+      { "id": "timeline", "label": "Desired Timeline", "placeholder": "e.g., 8–12 weeks" },
+      { "id": "notes", "label": "Additional Notes", "placeholder": "Any special requirements" }
     ]
   }
 ]
